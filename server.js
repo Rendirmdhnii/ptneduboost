@@ -9,12 +9,11 @@ const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const JWT_SECRET = 'rahasia_negara_pahamin_2026'; // Token rahasia
+const JWT_SECRET = 'rahasia_negara_pahamin_2026';
 
 // ===========================================
-// 1. KONEKSI DATABASE (SUDAH DIPERBAIKI)
+// 1. KONEKSI DATABASE (VERSI AMAN)
 // ===========================================
-// Password 'Rendy@123' diubah jadi 'Rendy%40123' agar aman
 const MONGO_URI = 'mongodb+srv://User2003:Rendy%40123@cluster0.ldclokk.mongodb.net/pahamin_db?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(MONGO_URI)
@@ -22,7 +21,7 @@ mongoose.connect(MONGO_URI)
     .catch(err => console.error("❌ ERROR: Gagal Konek Database", err));
 
 // ===========================================
-// 2. MODEL DATA (SCHEMA)
+// 2. MODEL DATA
 // ===========================================
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true },
@@ -57,8 +56,12 @@ const loadQuestions = () => {
 };
 
 // ===========================================
-// 3. API REGISTER & LOGIN
+// 3. API ROUTES
 // ===========================================
+
+app.get('/', (req, res) => {
+    res.send('Server PAHAMIN is Running on Vercel!');
+});
 
 // REGISTER
 app.post('/api/auth/register', async (req, res) => {
@@ -94,9 +97,7 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-// ===========================================
-// 4. API UTAMA (SOAL & SUBMIT)
-// ===========================================
+// API SOAL
 app.get('/api/questions', (req, res) => {
     const { mode, category } = req.query;
     let allQuestions = loadQuestions();
@@ -112,6 +113,7 @@ app.get('/api/questions', (req, res) => {
     res.json(safeQuestions);
 });
 
+// API SUBMIT
 app.post('/api/submit', async (req, res) => {
     const { mode, answers, token } = req.body;
     const allQuestions = loadQuestions();
@@ -172,6 +174,15 @@ app.post('/api/submit', async (req, res) => {
     res.json({ mode, score: totalScore, correctCount, recommendations, chanceLabel, details: results });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server jalan di http://localhost:${PORT}`);
-});
+// ===========================================
+// 4. CONFIG KHUSUS VERCEL (PENTING!)
+// ===========================================
+// Ini biar Vercel bisa menjalankan servernya
+module.exports = app;
+
+// Ini biar tetep bisa jalan di laptop (node server.js)
+if (require.main === module) {
+    app.listen(PORT, () => {
+        console.log(`Server jalan di http://localhost:${PORT}`);
+    });
+}
