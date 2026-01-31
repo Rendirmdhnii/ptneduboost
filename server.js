@@ -14,7 +14,7 @@ const JWT_SECRET = 'rahasia_negara_pahamin_2026';
 // ===========================================
 // 1. KONEKSI DATABASE (VERSI AMAN)
 // ===========================================
-const MONGO_URI = 'mongodb+srv://User2003:Rendy%40123@cluster0.ldclokk.mongodb.net/pahamin_db?retryWrites=true&w=majority&appName=Cluster0';
+const MONGO_URI = 'mongodb+srv://User2003:Rendy123@cluster0.ldclokk.mongodb.net/pahamin_db?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(MONGO_URI)
     .then(() => console.log("✅ SUKSES: Database Terhubung!"))
