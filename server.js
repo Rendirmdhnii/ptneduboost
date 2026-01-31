@@ -1,28 +1,43 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-const path = require('path');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const fs = require('fs');
+
+// === BAGIAN INI YANG KITA PERBAIKI ===
+// Kita pakai 'require' supaya Vercel otomatis membawa file ini
+let databaseSoal = [];
+try {
+    databaseSoal = require('./data/questions.json');
+    console.log("✅ Soal berhasil dimuat: " + databaseSoal.length + " butir.");
+} catch (e) {
+    console.error("❌ Gagal load soal:", e);
+    // Data cadangan kalau file gagal dibaca (supaya tidak error)
+    databaseSoal = [
+        {
+            "id": 1,
+            "category": "Pengetahuan Kuantitatif",
+            "text": "Jika 2x + 3 = 9, berapakah nilai x?",
+            "options": { "A": "1", "B": "2", "C": "3", "D": "4", "E": "5" },
+            "correct": "C",
+            "explanation": "2x = 6, maka x = 3"
+        }
+    ];
+}
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 const JWT_SECRET = 'rahasia_negara_pahamin_2026';
 
-// ===========================================
-// 1. KONEKSI DATABASE (VERSI AMAN)
-// ===========================================
+// 1. KONEKSI DATABASE (Password Baru Kamu)
 const MONGO_URI = 'mongodb+srv://User2003:Rendy123@cluster0.ldclokk.mongodb.net/pahamin_db?retryWrites=true&w=majority&appName=Cluster0';
 
 mongoose.connect(MONGO_URI)
-    .then(() => console.log("✅ SUKSES: Database Terhubung!"))
-    .catch(err => console.error("❌ ERROR: Gagal Konek Database", err));
+    .then(() => console.log("✅ Database Terhubung!"))
+    .catch(err => console.error("❌ Gagal Konek Database", err));
 
-// ===========================================
 // 2. MODEL DATA
-// ===========================================
 const UserSchema = new mongoose.Schema({
     username: { type: String, required: true },
     email: { type: String, required: true, unique: true },
@@ -47,20 +62,10 @@ app.use(cors({ origin: '*', methods: ['GET', 'POST'] }));
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
-// Load Soal
-const loadQuestions = () => {
-    try {
-        const rawData = fs.readFileSync(path.join(__dirname, 'data', 'questions.json'));
-        return JSON.parse(rawData);
-    } catch (error) { return []; }
-};
-
-// ===========================================
 // 3. API ROUTES
-// ===========================================
 
 app.get('/', (req, res) => {
-    res.send('Server PAHAMIN is Running on Vercel!');
+    res.send('Server PAHAMIN is Running! Soal Loaded: ' + databaseSoal.length);
 });
 
 // REGISTER
@@ -74,7 +79,7 @@ app.post('/api/auth/register', async (req, res) => {
         const newUser = new User({ username, email, password: hashedPassword, school });
         await newUser.save();
 
-        res.json({ message: "Pendaftaran berhasil! Silakan login." });
+        res.json({ message: "Pendaftaran berhasil!" });
     } catch (err) {
         res.status(500).json({ message: "Server Error saat Register." });
     }
@@ -97,26 +102,27 @@ app.post('/api/auth/login', async (req, res) => {
     }
 });
 
-// API SOAL
+// API AMBIL SOAL
 app.get('/api/questions', (req, res) => {
     const { mode, category } = req.query;
-    let allQuestions = loadQuestions();
+    let filteredQuestions = databaseSoal; // Pakai variable global
     
+    // Filter kategori kalau mode latihan
     if (mode === 'practice' && category) {
-        allQuestions = allQuestions.filter(q => q.category === category);
+        filteredQuestions = databaseSoal.filter(q => q.category === category);
     }
     
-    const safeQuestions = allQuestions.map(q => {
+    // Keamanan: Jangan kirim kunci jawaban ke frontend
+    const safeQuestions = filteredQuestions.map(q => {
         const { correct, explanation, ...safeData } = q;
         return safeData;
     });
     res.json(safeQuestions);
 });
 
-// API SUBMIT
+// API KIRIM JAWABAN (SUBMIT)
 app.post('/api/submit', async (req, res) => {
     const { mode, answers, token } = req.body;
-    const allQuestions = loadQuestions();
     
     let userId = null;
     if (token) {
@@ -128,10 +134,12 @@ app.post('/api/submit', async (req, res) => {
 
     let correctCount = 0;
     const results = answers.map(ans => {
-        const originalQ = allQuestions.find(q => q.id === ans.id);
+        const originalQ = databaseSoal.find(q => q.id === ans.id);
         if (!originalQ) return null;
+        
         const isCorrect = ans.choice === originalQ.correct;
         if (isCorrect) correctCount++;
+        
         return {
             id: ans.id,
             userChoice: ans.choice,
@@ -141,12 +149,15 @@ app.post('/api/submit', async (req, res) => {
         };
     }).filter(item => item !== null);
 
+    // Hitung Skor (Skala 1000 ala UTBK)
     let totalScore = 0;
-    if (mode === 'full') {
-        const totalQuestions = allQuestions.length || 1;
-        totalScore = Math.round((correctCount / totalQuestions) * 1000);
-    }
+    const totalQuestions = databaseSoal.length || 1; 
+    // Kalau mode practice, pembaginya jumlah soal yg dikerjakan saja
+    const divisor = mode === 'full' ? totalQuestions : answers.length;
+    
+    totalScore = Math.round((correctCount / (divisor || 1)) * 1000);
 
+    // Simpan History ke Database
     if (userId) {
         try {
             const newHistory = new Result({
@@ -158,29 +169,19 @@ app.post('/api/submit', async (req, res) => {
 
     let recommendations = [];
     let chanceLabel = "";
-    if (mode === 'full') {
-        if (totalScore >= 700) {
-            chanceLabel = "Sangat Kompetitif (Aman)";
-            recommendations = ["Teknik Informatika - UI/ITB", "Kedokteran - UNAIR"];
-        } else if (totalScore >= 550) {
-            chanceLabel = "Kompetitif";
-            recommendations = ["Sistem Informasi - UB", "Hukum - UNDIP"];
-        } else {
-            chanceLabel = "Perbanyak Latihan";
-            recommendations = ["Fokus perbaiki materi dasar"];
-        }
+    if (totalScore >= 700) {
+        chanceLabel = "Sangat Kompetitif (Aman)";
+    } else if (totalScore >= 500) {
+        chanceLabel = "Kompetitif";
+    } else {
+        chanceLabel = "Perlu Belajar Lagi";
     }
 
-    res.json({ mode, score: totalScore, correctCount, recommendations, chanceLabel, details: results });
+    res.json({ mode, score: totalScore, correctCount, chanceLabel, details: results });
 });
 
-// ===========================================
-// 4. CONFIG KHUSUS VERCEL (PENTING!)
-// ===========================================
-// Ini biar Vercel bisa menjalankan servernya
+// Config Vercel
 module.exports = app;
-
-// Ini biar tetep bisa jalan di laptop (node server.js)
 if (require.main === module) {
     app.listen(PORT, () => {
         console.log(`Server jalan di http://localhost:${PORT}`);
