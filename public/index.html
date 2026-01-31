@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>PAHAMIN - Simulasi UTBK Terlengkap</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="auth-overlay">
+        <div class="auth-box">
+            <h2 style="color:var(--primary-blue)">Data Peserta</h2>
+            <div class="form-group">
+                <label>Nama Lengkap</label>
+                <input type="text" id="input-name" placeholder="Nama Anda">
+            </div>
+            <div class="form-group">
+                <label>Asal Sekolah</label>
+                <input type="text" id="input-school" placeholder="Nama Sekolah">
+            </div>
+            <button class="btn-primary" onclick="saveUserInfo()">Masuk</button>
+        </div>
+    </div>
+
+    <header id="main-header" class="hidden">
+        <div class="brand-logo">PAHAMIN</div>
+        <div class="user-profile">
+            <div class="user-name" id="display-name">Peserta</div>
+            <div class="user-school" id="display-school">Sekolah</div>
+        </div>
+    </header>
+
+    <div id="landing-page" class="hidden">
+        <div id="mode-selector">
+            <h1>Pilih Mode Simulasi</h1>
+            
+            <div class="mode-card">
+                <h3>A. Mode Latihan Per Subtes</h3>
+                <p>Pilih materi spesifik yang ingin kamu latih.</p>
+                
+                <select id="chapter-dropdown" style="padding:10px; width:100%; margin:15px 0; border:1px solid #ccc; border-radius:5px; font-size:1rem;">
+                    <optgroup label="Tes Potensi Skolastik (TPS)">
+                        <option value="PU">Penalaran Umum (Campuran)</option>
+                        <option value="PU-IND">Penalaran Induktif</option>
+                        <option value="PU-DED">Penalaran Deduktif</option>
+                        <option value="PPU">Pengetahuan & Pemahaman Umum</option>
+                        <option value="PBM">Pemahaman Bacaan & Menulis</option>
+                        <option value="PK">Pengetahuan Kuantitatif</option>
+                    </optgroup>
+                    
+                    <optgroup label="Tes Literasi">
+                        <option value="LB-INDO">Literasi Bahasa Indonesia</option>
+                        <option value="LB-ING">Literasi Bahasa Inggris</option>
+                        <option value="PM">Penalaran Matematika</option>
+                    </optgroup>
+                </select>
+
+                <button class="btn-primary" onclick="confirmPracticeStart()">Mulai Latihan</button>
+            </div>
+
+            <div class="mode-card" style="border: 2px solid var(--primary-blue); margin-top: 20px;">
+                <h3 style="color:var(--primary-blue)">B. Simulasi UTBK Full</h3>
+                <p>Mengerjakan semua subtes sekaligus.</p>
+                <p style="font-size:0.9rem; color:#666;">Total 160+ Soal | Durasi 195 Menit</p>
+                <button class="btn-primary" style="margin-top:15px;" onclick="startFullMode()">Mulai Simulasi Full</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="exam-container" class="hidden">
+        
+        <div class="exam-toolbar">
+            <div id="section-title" style="font-weight:bold; font-size:0.9rem; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Nama Tes</div>
+            <div class="timer-display" id="timer-display">00:00:00</div>
+        </div>
+        
+        <div class="question-area" id="question-area">
+            </div>
+
+        <div class="nav-buttons-area">
+            <button class="btn-nav" id="btn-prev" onclick="prevQuestion()">&lt; Sebelumnya</button>
+            <button class="btn-nav" id="btn-next" onclick="nextQuestion()">Selanjutnya &gt;</button>
+        </div>
+
+        <div class="navigation-section">
+            <p style="font-weight:bold; margin-bottom:10px;">Navigasi Soal:</p>
+            <div id="nav-grid" class="nav-grid">
+                </div>
+            
+            <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">
+            <button class="btn-finish" onclick="submitExam()">SELESAI UJIAN</button>
+        </div>
+    </div>
+
+    <div id="result-page" class="hidden" style="max-width:800px; margin:0 auto; padding:20px; background:white;">
+        <h1 style="text-align:center;">Hasil Simulasi</h1>
+        
+        <div id="score-board" class="hidden" style="background:#f8f9fa; padding:20px; border-radius:10px; text-align:center; margin-bottom:30px;">
+            <h2 style="color:var(--primary-blue); font-size:2.5rem; margin:0;">Skor: <span id="final-score">0</span></h2>
+            <h3 id="chance-label" style="margin-top:10px;"></h3>
+            <div id="recommendations" style="text-align:left; display:inline-block; margin-top:15px; font-size:0.95rem;"></div>
+        </div>
+        
+        <div id="review-container">
+            </div>
+        
+        <div style="text-align:center; margin:40px 0;">
+            <button class="btn-primary" onclick="location.reload()">Kembali ke Menu Utama</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
