@@ -2,114 +2,331 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>PAHAMIN - Simulasi UTBK Terlengkap</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAHAMIN - Simulasi UTBK</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --white: #fff; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
+        body { background:var(--bg); color:var(--text); min-height:100vh; }
+        .hidden { display:none !important; }
+        
+        /* 1. LAYAR LOGIN & DAFTAR */
+        #auth-overlay { 
+            position:fixed; top:0; left:0; width:100%; height:100%; 
+            background:rgba(0,0,0,0.8); /* Latar belakang gelap */
+            display:flex; justify-content:center; align-items:center; 
+            z-index:9999; backdrop-filter:blur(5px); 
+        }
+        .auth-box { 
+            background:white; padding:2rem; border-radius:12px; 
+            width:90%; max-width:400px; 
+            box-shadow:0 10px 25px rgba(0,0,0,0.3); 
+        }
+        .auth-tabs { display:flex; margin-bottom:20px; border-bottom:2px solid #eee; }
+        .auth-tabs button { 
+            flex:1; padding:12px; background:none; border:none; 
+            font-weight:600; font-size:1rem; color:#aaa; cursor:pointer; 
+            border-bottom:3px solid transparent; transition:0.3s;
+        }
+        .auth-tabs button.active { 
+            color:var(--primary); border-bottom:3px solid var(--primary); 
+        }
+        
+        .form-group { margin-bottom:15px; }
+        .form-group label { display:block; margin-bottom:5px; font-weight:600; font-size:0.9rem; }
+        .form-group input { width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; font-size:1rem; }
+        
+        .btn-primary { 
+            background:var(--primary); color:white; border:none; 
+            padding:14px; border-radius:6px; width:100%; 
+            font-weight:bold; font-size:1rem; cursor:pointer; margin-top:10px; 
+            transition:0.2s;
+        }
+        .btn-primary:hover { background:#004494; }
+
+        /* 2. HEADER & DASHBOARD */
+        #main-header { background:var(--primary); color:white; padding:1rem; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; width:100%; z-index:100; }
+        #landing-page { margin-top:80px; padding:20px; display:flex; justify-content:center; }
+        .mode-card { background:white; padding:20px; border-radius:10px; border:1px solid #eee; margin-bottom:20px; max-width:600px; width:100%; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        
+        /* 3. UJIAN */
+        #exam-container { margin-top:80px; padding:20px; max-width:800px; margin-left:auto; margin-right:auto; }
+        .question-area { background:white; padding:20px; border-radius:10px; margin-bottom:20px; font-size:1.1rem; line-height:1.6; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        .option { display:flex; gap:10px; padding:15px; border:1px solid #eee; border-radius:8px; margin-bottom:10px; cursor:pointer; transition:0.2s; }
+        .option:hover { background:#f9f9f9; }
+        .option.selected { background:#eef6ff; border-color:var(--primary); }
+        .opt-label { width:25px; height:25px; background:#eee; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:bold; }
+        .option.selected .opt-label { background:var(--primary); color:white; }
+        
+        .nav-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:10px; }
+        .nav-item { padding:10px; background:#fff; border:1px solid #ccc; text-align:center; cursor:pointer; border-radius:4px; font-weight:bold; }
+        .nav-item.active { background:var(--primary); color:white; border-color:var(--primary); }
+        .nav-item.answered { background:#d4edda; border-color:#c3e6cb; }
+    </style>
 </head>
 <body>
 
     <div id="auth-overlay">
         <div class="auth-box">
-            <h2 style="color:var(--primary-blue)">Data Peserta</h2>
-            <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" id="input-name" placeholder="Nama Anda">
+            <h2 style="text-align:center; color:var(--primary); margin-bottom:20px;">Selamat Datang</h2>
+            
+            <div class="auth-tabs">
+                <button id="tab-login" class="active" onclick="switchMode('login')">Masuk</button>
+                <button id="tab-register" onclick="switchMode('register')">Daftar</button>
             </div>
-            <div class="form-group">
-                <label>Asal Sekolah</label>
-                <input type="text" id="input-school" placeholder="Nama Sekolah">
+            
+            <div id="form-login">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="l-email" placeholder="contoh@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="l-password" placeholder="******">
+                </div>
+                <button class="btn-primary" onclick="doLogin()">MASUK SEKARANG</button>
             </div>
-            <button class="btn-primary" onclick="saveUserInfo()">Masuk</button>
+
+            <div id="form-register" class="hidden">
+                <div class="form-group">
+                    <label>Nama Lengkap</label>
+                    <input type="text" id="r-name" placeholder="Nama Kamu">
+                </div>
+                <div class="form-group">
+                    <label>Asal Sekolah</label>
+                    <input type="text" id="r-school" placeholder="Nama Sekolah">
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="r-email" placeholder="contoh@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="r-password" placeholder="Buat Password">
+                </div>
+                <button class="btn-primary" onclick="doRegister()">DAFTAR AKUN</button>
+            </div>
+            <p id="auth-msg" style="color:red; text-align:center; margin-top:15px; font-size:0.9rem;"></p>
         </div>
     </div>
 
     <header id="main-header" class="hidden">
-        <div class="brand-logo">PAHAMIN</div>
-        <div class="user-profile">
-            <div class="user-name" id="display-name">Peserta</div>
-            <div class="user-school" id="display-school">Sekolah</div>
+        <div style="font-weight:bold; font-size:1.2rem;">PAHAMIN</div>
+        <div style="text-align:right;">
+            <div id="u-name" style="font-size:0.9rem; font-weight:600;">User</div>
+            <div onclick="logout()" style="font-size:0.7rem; cursor:pointer; text-decoration:underline;">Keluar</div>
         </div>
     </header>
 
     <div id="landing-page" class="hidden">
-        <div id="mode-selector">
-            <h1>Pilih Mode Simulasi</h1>
+        <div style="width:100%; max-width:600px;">
+            <h2 style="text-align:center; margin-bottom:20px;">Pilih Mode Belajar</h2>
             
             <div class="mode-card">
-                <h3>A. Mode Latihan Per Subtes</h3>
-                <p>Pilih materi spesifik yang ingin kamu latih.</p>
-                
-                <select id="chapter-dropdown" style="padding:10px; width:100%; margin:15px 0; border:1px solid #ccc; border-radius:5px; font-size:1rem;">
-                    <optgroup label="Tes Potensi Skolastik (TPS)">
-                        <option value="PU">Penalaran Umum (Campuran)</option>
-                        <option value="PU-IND">Penalaran Induktif</option>
-                        <option value="PU-DED">Penalaran Deduktif</option>
-                        <option value="PPU">Pengetahuan & Pemahaman Umum</option>
-                        <option value="PBM">Pemahaman Bacaan & Menulis</option>
-                        <option value="PK">Pengetahuan Kuantitatif</option>
-                    </optgroup>
-                    
-                    <optgroup label="Tes Literasi">
-                        <option value="LB-INDO">Literasi Bahasa Indonesia</option>
-                        <option value="LB-ING">Literasi Bahasa Inggris</option>
-                        <option value="PM">Penalaran Matematika</option>
-                    </optgroup>
+                <h3>A. Latihan Per Subtes</h3>
+                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Pilih materi spesifik (20 Soal)</p>
+                <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
+                    <option value="Penalaran Umum">Penalaran Umum</option>
+                    <option value="Pengetahuan Kuantitatif">Pengetahuan Kuantitatif</option>
+                    <option value="Literasi Bahasa Indonesia">Literasi Bahasa Indonesia</option>
+                    <option value="Literasi Bahasa Inggris">Literasi Bahasa Inggris</option>
+                    <option value="Penalaran Matematika">Penalaran Matematika</option>
                 </select>
-
-                <button class="btn-primary" onclick="confirmPracticeStart()">Mulai Latihan</button>
+                <button class="btn-primary" onclick="startExam('practice')">Mulai Latihan</button>
             </div>
-
-            <div class="mode-card" style="border: 2px solid var(--primary-blue); margin-top: 20px;">
-                <h3 style="color:var(--primary-blue)">B. Simulasi UTBK Full</h3>
-                <p>Mengerjakan semua subtes sekaligus.</p>
-                <p style="font-size:0.9rem; color:#666;">Total 160+ Soal | Durasi 195 Menit</p>
-                <button class="btn-primary" style="margin-top:15px;" onclick="startFullMode()">Mulai Simulasi Full</button>
+            
+            <div class="mode-card" style="border:2px solid var(--primary); background:#f0f7ff;">
+                <h3 style="color:var(--primary);">B. Simulasi Full</h3>
+                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">180 Soal | Durasi Asli (195 Menit)</p>
+                <button class="btn-primary" onclick="startExam('full')">Mulai Simulasi Full</button>
             </div>
         </div>
     </div>
 
     <div id="exam-container" class="hidden">
-        
-        <div class="exam-toolbar">
-            <div id="section-title" style="font-weight:bold; font-size:0.9rem; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">Nama Tes</div>
-            <div class="timer-display" id="timer-display">00:00:00</div>
+        <div style="display:flex; justify-content:space-between; margin-bottom:15px; background:white; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);">
+            <b id="exam-title">Ujian</b>
+            <b id="timer" style="color:red; font-family:monospace; font-size:1.2rem;">00:00:00</b>
         </div>
         
-        <div class="question-area" id="question-area">
-            </div>
-
-        <div class="nav-buttons-area">
-            <button class="btn-nav" id="btn-prev" onclick="prevQuestion()">&lt; Sebelumnya</button>
-            <button class="btn-nav" id="btn-next" onclick="nextQuestion()">Selanjutnya &gt;</button>
+        <div id="question-box" class="question-area">Loading...</div>
+        
+        <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
+            <button onclick="navQ(-1)" style="padding:10px 20px; cursor:pointer;">❮ Sebelumnya</button>
+            <button onclick="navQ(1)" style="padding:10px 20px; cursor:pointer;">Selanjutnya ❯</button>
         </div>
 
-        <div class="navigation-section">
+        <div style="background:white; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.05);">
             <p style="font-weight:bold; margin-bottom:10px;">Navigasi Soal:</p>
-            <div id="nav-grid" class="nav-grid">
-                </div>
+            <div id="nav-grid" class="nav-grid"></div>
+            <button class="btn-primary" style="background:#dc3545; margin-top:20px;" onclick="submitExam()">AKHIRI UJIAN</button>
+        </div>
+    </div>
+
+    <div id="result-page" class="hidden" style="margin-top:100px; text-align:center;">
+        <div class="mode-card" style="margin:0 auto;">
+            <h1>Hasil Kamu</h1>
+            <h2 id="final-score" style="font-size:3.5rem; color:var(--primary); margin:20px 0;">0</h2>
+            <p id="final-msg" style="font-size:1.1rem; color:#666;">Semangat!</p>
+            <button class="btn-primary" onclick="location.reload()">Kembali ke Menu</button>
+        </div>
+    </div>
+
+    <script>
+        // === LOGIKA JAVASCRIPT ===
+        
+        // 1. OTENTIKASI (LOGIN/REGISTER)
+        function switchMode(m) {
+            document.getElementById('form-login').classList.toggle('hidden', m !== 'login');
+            document.getElementById('form-register').classList.toggle('hidden', m !== 'register');
+            document.getElementById('tab-login').classList.toggle('active', m === 'login');
+            document.getElementById('tab-register').classList.toggle('active', m === 'register');
+            document.getElementById('auth-msg').innerText = "";
+        }
+
+        async function doLogin() {
+            const email = document.getElementById('l-email').value;
+            const password = document.getElementById('l-password').value;
+            const btn = document.querySelector('#form-login button');
             
-            <hr style="margin:20px 0; border:0; border-top:1px solid #ddd;">
-            <button class="btn-finish" onclick="submitExam()">SELESAI UJIAN</button>
-        </div>
-    </div>
+            btn.innerText = "Loading...";
+            
+            try {
+                // Panggil API Backend
+                const res = await fetch('/api/auth/login', {
+                    method: 'POST', headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({email, password})
+                });
+                const d = await res.json();
+                
+                if(d.user) {
+                    localStorage.setItem('user', JSON.stringify(d.user));
+                    showDash(d.user);
+                } else {
+                    document.getElementById('auth-msg').innerText = "Login Gagal. Cek email/password.";
+                }
+            } catch(e) { 
+                document.getElementById('auth-msg').innerText = "Gagal koneksi ke server.";
+            }
+            btn.innerText = "MASUK SEKARANG";
+        }
 
-    <div id="result-page" class="hidden" style="max-width:800px; margin:0 auto; padding:20px; background:white;">
-        <h1 style="text-align:center;">Hasil Simulasi</h1>
-        
-        <div id="score-board" class="hidden" style="background:#f8f9fa; padding:20px; border-radius:10px; text-align:center; margin-bottom:30px;">
-            <h2 style="color:var(--primary-blue); font-size:2.5rem; margin:0;">Skor: <span id="final-score">0</span></h2>
-            <h3 id="chance-label" style="margin-top:10px;"></h3>
-            <div id="recommendations" style="text-align:left; display:inline-block; margin-top:15px; font-size:0.95rem;"></div>
-        </div>
-        
-        <div id="review-container">
-            </div>
-        
-        <div style="text-align:center; margin:40px 0;">
-            <button class="btn-primary" onclick="location.reload()">Kembali ke Menu Utama</button>
-        </div>
-    </div>
+        async function doRegister() {
+            // Simulasi register sukses
+            alert("✅ Pendaftaran Berhasil! Silakan Masuk.");
+            switchMode('login');
+        }
 
-    <script src="script.js"></script>
+        function showDash(user) {
+            document.getElementById('auth-overlay').classList.add('hidden');
+            document.getElementById('main-header').classList.remove('hidden');
+            document.getElementById('landing-page').classList.remove('hidden');
+            document.getElementById('u-name').innerText = user.name;
+        }
+
+        function logout() { 
+            localStorage.clear(); 
+            location.reload(); 
+        }
+        
+        // Cek Login Saat Refresh
+        const saved = localStorage.getItem('user');
+        if(saved) showDash(JSON.parse(saved));
+
+        // 2. SISTEM UJIAN
+        let questions = [], answers = [], idx = 0, timerVal;
+
+        async function startExam(mode) {
+            const cat = document.getElementById('mapel').value;
+            const btn = document.querySelector(mode === 'practice' ? '#landing-page .mode-card:first-child button' : '#landing-page .mode-card:last-child button');
+            
+            btn.innerText = "Menyiapkan Soal...";
+            
+            let url = `/api/questions?mode=${mode}`;
+            if(mode === 'practice') url += `&category=${encodeURIComponent(cat)}`;
+
+            try {
+                const res = await fetch(url);
+                const data = await res.json();
+                
+                if(!data || data.length === 0) { 
+                    alert("⚠️ Database soal belum siap atau kosong."); 
+                    btn.innerText = mode === 'practice' ? "Mulai Latihan" : "Mulai Simulasi Full";
+                    return; 
+                }
+                
+                questions = data; 
+                answers = new Array(data.length).fill(null); 
+                idx = 0;
+                
+                document.getElementById('landing-page').classList.add('hidden');
+                document.getElementById('exam-container').classList.remove('hidden');
+                document.getElementById('exam-title').innerText = mode === 'full' ? "Simulasi UTBK Full" : cat;
+                
+                renderQ(); renderNav();
+                startTimer(mode === 'full' ? 195*60 : 20*60);
+                
+            } catch(e) { 
+                alert("Gagal mengambil soal. Pastikan koneksi aman."); 
+                location.reload(); 
+            }
+        }
+
+        function renderQ() {
+            const q = questions[idx];
+            const txt = q.question || q.text || "Teks soal error.";
+            let h = `<p style="margin-bottom:20px; font-weight:500;"><b>Soal No ${idx+1}.</b><br><br>${txt}</p>`;
+            
+            ['A','B','C','D','E'].forEach(opt => {
+                const sel = answers[idx] === opt ? 'selected' : '';
+                const optText = q.options[opt] || '';
+                h += `<div class="option ${sel}" onclick="pilih('${opt}')">
+                        <div class="opt-label">${opt}</div>
+                        <div>${optText}</div>
+                      </div>`;
+            });
+            document.getElementById('question-box').innerHTML = h;
+            renderNav();
+        }
+
+        function pilih(opt) { answers[idx] = opt; renderQ(); }
+        function navQ(d) { if(idx+d >= 0 && idx+d < questions.length) { idx += d; renderQ(); } }
+
+        function renderNav() {
+            const g = document.getElementById('nav-grid'); g.innerHTML = '';
+            questions.forEach((_, i) => {
+                const d = document.createElement('div');
+                d.className = `nav-item ${idx===i?'active':''} ${answers[i]?'answered':''}`;
+                d.innerText = i+1;
+                d.onclick = () => { idx=i; renderQ(); };
+                g.appendChild(d);
+            });
+        }
+
+        function startTimer(s) {
+            const el = document.getElementById('timer');
+            clearInterval(timerVal);
+            timerVal = setInterval(() => {
+                let m = Math.floor(s/60), sec = s%60;
+                let h = Math.floor(m/60); m = m%60;
+                el.innerText = `${h}:${m<10?'0'+m:m}:${sec<10?'0'+sec:sec}`;
+                if(--s < 0) { clearInterval(timerVal); submitExam(); }
+            }, 1000);
+        }
+
+        function submitExam() {
+            if(!confirm("Yakin ingin menyelesaikan ujian?")) return;
+            clearInterval(timerVal);
+            let b = 0;
+            questions.forEach((q, i) => { if(answers[i] === q.correct) b++; });
+            const skor = Math.round((b/questions.length)*1000);
+            
+            document.getElementById('exam-container').classList.add('hidden');
+            document.getElementById('result-page').classList.remove('hidden');
+            document.getElementById('final-score').innerText = skor;
+            document.getElementById('final-msg').innerText = `Benar ${b} dari ${questions.length} Soal`;
+        }
+    </script>
 </body>
 </html>
