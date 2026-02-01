@@ -24,60 +24,60 @@ app.get('/api/questions', (req, res) => {
         let allQuestions = getQuestions();
         let result = [];
 
+        // --- MODE LATIHAN (PER SUBTES) ---
         if (mode === 'practice') {
-            const catLower = category ? category.toLowerCase() : '';
-            let filtered = [];
-
-            // --- LOGIKA FILTER PINTAR ---
+            // Kita ambil nama kategori LENGKAP dari frontend (kecilkan huruf biar aman)
+            // Contoh: frontend kirim "Literasi Bahasa Inggris", kita cari persis itu.
+            const targetCategory = category ? category.toLowerCase() : '';
             
-            // KASUS 1: LITERASI (Harus Spesifik agar tidak campur)
-            if (catLower.includes('literasi')) {
-                // Cari yang mengandung nama LENGKAP. 
-                // Contoh: "literasi bahasa inggris" hanya akan cocok dengan soal yang labelnya ada "inggris"-nya.
-                filtered = allQuestions.filter(q => 
-                    q.category && q.category.toLowerCase().includes(catLower)
-                );
-            } 
-            // KASUS 2: PENALARAN (Boleh Umum)
-            // Agar "Penalaran Induktif" tetap bisa menarik soal "Penalaran Umum"
-            else {
-                const firstWord = catLower.split(' ')[0]; // Ambil "penalaran" saja
-                filtered = allQuestions.filter(q => 
-                    q.category && q.category.toLowerCase().includes(firstWord)
-                );
-            }
+            // FILTER SPESIFIK (STRICT MODE)
+            // Hanya ambil soal yang label kategorinya mengandung nama LENGKAP tadi.
+            // Jadi "Literasi Bahasa Inggris" TIDAK AKAN cocok dengan "Literasi Bahasa Indonesia".
+            const filtered = allQuestions.filter(q => 
+                q.category && 
+                typeof q.category === 'string' && 
+                q.category.toLowerCase().includes(targetCategory)
+            );
 
-            // --- ATUR JUMLAH SOAL ---
+            // Tentukan jumlah soal sesuai permintaan (Limit)
             const qty = limit ? parseInt(limit) : 20;
 
             if (filtered.length > 0) {
+                // Acak urutan soal, lalu ambil sejumlah qty
                 result = filtered.sort(() => 0.5 - Math.random()).slice(0, qty);
             } else {
-                // Plan B: Jika kosong, ambil acak (Daripada error)
-                console.log(`Soal spesifik ${category} kosong. Mengambil acak.`);
+                // INFO DEBUG: Jika kosong, kita kasih tau di console server (bisa dicek di logs Vercel)
+                console.log(`⚠️ Soal untuk kategori '${category}' tidak ditemukan persis. Cek ejaan di database.`);
+                
+                // PLAN B (Darurat): Ambil acak daripada stuck loading (Opsional, bisa dihapus kalau mau strict banget)
+                // Kalau kamu yakin datanya lengkap, bagian ini sebenarnya jarang tereksekusi.
                 result = allQuestions.sort(() => 0.5 - Math.random()).slice(0, qty);
             }
         } 
+        // --- MODE FULL (SIMULASI UTBK) ---
         else {
-            // MODE FULL (155 Soal)
+            // Ambil 155 Soal acak dari semua kategori
             result = allQuestions.slice(0, 155); 
         }
         
         res.json(result);
 
     } catch (error) {
+        console.error("Server Error:", error);
         res.json([]);
     }
 });
 
+// Login Mockup
 app.post('/api/auth/login', (req, res) => {
     res.json({ message: "Login OK", user: { name: "Peserta", email: req.body.email } });
 });
 
+// Serve Frontend
 app.get('/', (req, res) => {
     const htmlPath = path.join(process.cwd(), 'index.html');
     if (fs.existsSync(htmlPath)) res.sendFile(htmlPath);
-    else res.status(404).send("File index.html tidak ditemukan.");
+    else res.status(404).send("Index html not found");
 });
 
 module.exports = app;
