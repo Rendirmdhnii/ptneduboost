@@ -126,13 +126,21 @@
             <div class="mode-card">
                 <h3>A. Latihan Per Subtes</h3>
                 <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Pilih materi spesifik (20 Soal)</p>
-                <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
-                    <option value="Penalaran Umum">Penalaran Umum</option>
-                    <option value="Pengetahuan Kuantitatif">Pengetahuan Kuantitatif</option>
-                    <option value="Literasi Bahasa Indonesia">Literasi Bahasa Indonesia</option>
-                    <option value="Literasi Bahasa Inggris">Literasi Bahasa Inggris</option>
-                    <option value="Penalaran Matematika">Penalaran Matematika</option>
-                </select>
+                <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc; font-size:1rem;">
+    <optgroup label="Tes Potensi Skolastik (TPS)">
+        <option value="Penalaran Umum">Penalaran Umum (Campuran)</option>
+        <option value="Penalaran Induktif">Penalaran Induktif</option>
+        <option value="Penalaran Deduktif">Penalaran Deduktif</option>
+        <option value="Pengetahuan & Pemahaman Umum">Pengetahuan & Pemahaman Umum</option>
+        <option value="Pemahaman Bacaan & Menulis">Pemahaman Bacaan & Menulis</option>
+        <option value="Pengetahuan Kuantitatif">Pengetahuan Kuantitatif</option>
+    </optgroup>
+    <optgroup label="Tes Literasi">
+        <option value="Literasi Bahasa Indonesia">Literasi Bahasa Indonesia</option>
+        <option value="Literasi Bahasa Inggris">Literasi Bahasa Inggris</option>
+        <option value="Penalaran Matematika">Penalaran Matematika</option>
+    </optgroup>
+</select>
                 <button class="btn-primary" onclick="startExam('practice')">Mulai Latihan</button>
             </div>
             
