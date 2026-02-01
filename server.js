@@ -5,11 +5,11 @@ const path = require('path');
 
 const app = express();
 
-// ==========================================
-// 1. KONFIGURASI SERVER
-// ==========================================
-app.use(cors()); // Wajib agar Frontend bisa akses
+app.use(cors());
 app.use(express.json());
+
+// INI KUNCINYA: Memberitahu Express untuk melayani file statis dari folder 'public'
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Load Database Soal
 const questionsPath = path.join(__dirname, 'data', 'questions.json');
@@ -173,6 +173,11 @@ app.post('/api/submit', (req, res) => {
         totalQuestions: totalSoal,
         chanceLabel
     });
+});
+
+// PENTING: Jika bukan memanggil API, maka kirimkan index.html agar website muncul
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // ==========================================
