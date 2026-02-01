@@ -11,31 +11,31 @@
         body { background:var(--bg); color:var(--text); min-height:100vh; }
         .hidden { display:none !important; }
         
-        /* 1. LAYAR LOGIN */
+        /* AUTH STYLE */
         #auth-overlay { position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); display:flex; justify-content:center; align-items:center; z-index:9999; backdrop-filter:blur(5px); }
         .auth-box { background:white; padding:2rem; border-radius:12px; width:90%; max-width:400px; box-shadow:0 10px 25px rgba(0,0,0,0.3); }
         .auth-tabs { display:flex; margin-bottom:20px; border-bottom:2px solid #eee; }
-        .auth-tabs button { flex:1; padding:12px; background:none; border:none; font-weight:600; font-size:1rem; color:#aaa; cursor:pointer; border-bottom:3px solid transparent; transition:0.3s; }
+        .auth-tabs button { flex:1; padding:12px; background:none; border:none; font-weight:600; color:#aaa; cursor:pointer; border-bottom:3px solid transparent; transition:0.3s; }
         .auth-tabs button.active { color:var(--primary); border-bottom:3px solid var(--primary); }
         .form-group { margin-bottom:15px; }
-        .form-group input { width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; font-size:1rem; }
-        .btn-primary { background:var(--primary); color:white; border:none; padding:14px; border-radius:6px; width:100%; font-weight:bold; font-size:1rem; cursor:pointer; margin-top:10px; transition:0.2s; }
-        
-        /* 2. HEADER & MENU */
+        .form-group input { width:100%; padding:12px; border:1px solid #ddd; border-radius:6px; }
+        .btn-primary { background:var(--primary); color:white; border:none; padding:14px; border-radius:6px; width:100%; font-weight:bold; cursor:pointer; margin-top:10px; }
+
+        /* DASHBOARD STYLE */
         #main-header { background:var(--primary); color:white; padding:1rem; display:flex; justify-content:space-between; align-items:center; position:fixed; top:0; width:100%; z-index:100; }
         #landing-page { margin-top:80px; padding:20px; display:flex; justify-content:center; }
         .mode-card { background:white; padding:20px; border-radius:10px; border:1px solid #eee; margin-bottom:20px; max-width:600px; width:100%; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
         
-        /* 3. UJIAN */
+        /* EXAM STYLE */
         #exam-container { margin-top:80px; padding:20px; max-width:800px; margin-left:auto; margin-right:auto; }
-        .question-area { background:white; padding:20px; border-radius:10px; margin-bottom:20px; font-size:1.1rem; line-height:1.6; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        .question-area { background:white; padding:20px; border-radius:10px; margin-bottom:20px; font-size:1.1rem; line-height:1.6; }
         .option { display:flex; gap:10px; padding:15px; border:1px solid #eee; border-radius:8px; margin-bottom:10px; cursor:pointer; }
         .option.selected { background:#eef6ff; border-color:var(--primary); }
         .opt-label { width:25px; height:25px; background:#eee; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:0.8rem; font-weight:bold; }
         .option.selected .opt-label { background:var(--primary); color:white; }
         .nav-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:10px; }
         .nav-item { padding:10px; background:#fff; border:1px solid #ccc; text-align:center; cursor:pointer; border-radius:4px; font-weight:bold; }
-        .nav-item.active { background:var(--primary); color:white; border-color:var(--primary); }
+        .nav-item.active { background:var(--primary); color:white; }
     </style>
 </head>
 <body>
@@ -62,7 +62,7 @@
     </div>
 
     <header id="main-header" class="hidden">
-        <div style="font-weight:bold; font-size:1.2rem;">PAHAMIN</div>
+        <div style="font-weight:bold;">PAHAMIN - UTBK 2026</div>
         <div style="text-align:right;"><div id="u-name" style="font-size:0.9rem;">User</div><div onclick="logout()" style="font-size:0.7rem; cursor:pointer;">Keluar</div></div>
     </header>
 
@@ -70,26 +70,31 @@
         <div style="width:100%; max-width:600px;">
             <div class="mode-card">
                 <h3>A. Latihan Per Subtes</h3>
-                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Pilih materi spesifik (20 Soal)</p>
+                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Waktu & Jumlah Soal disesuaikan standar UTBK</p>
+                
                 <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
-                    <optgroup label="Tes Potensi Skolastik (TPS)">
-                        <option value="Penalaran Umum">Penalaran Umum</option>
-                        <option value="Pengetahuan Kuantitatif">Pengetahuan Kuantitatif</option>
-                        <option value="Pengetahuan & Pemahaman Umum">Pengetahuan & Pemahaman Umum</option>
-                        <option value="Pemahaman Bacaan & Menulis">Pemahaman Bacaan & Menulis</option>
+                    <optgroup label="TPS - Penalaran Umum">
+                        <option value="Penalaran Induktif">Penalaran Induktif (10 Soal - 10 Menit)</option>
+                        <option value="Penalaran Deduktif">Penalaran Deduktif (10 Soal - 10 Menit)</option>
+                        <option value="Penalaran Kuantitatif">Penalaran Kuantitatif (10 Soal - 10 Menit)</option>
                     </optgroup>
-                    <optgroup label="Tes Literasi">
-                        <option value="Literasi Bahasa Indonesia">Literasi Bahasa Indonesia</option>
-                        <option value="Literasi Bahasa Inggris">Literasi Bahasa Inggris</option>
-                        <option value="Penalaran Matematika">Penalaran Matematika</option>
+                    <optgroup label="TPS - Pemahaman">
+                        <option value="Pengetahuan & Pemahaman Umum">Pengetahuan & Pemahaman Umum (20 Soal - 15 Menit)</option>
+                        <option value="Pemahaman Bacaan & Menulis">Pemahaman Bacaan & Menulis (20 Soal - 25 Menit)</option>
+                        <option value="Pengetahuan Kuantitatif">Pengetahuan Kuantitatif (20 Soal - 20 Menit)</option>
+                    </optgroup>
+                    <optgroup label="Literasi & Penalaran Matematika">
+                        <option value="Literasi Bahasa Indonesia">Literasi Bahasa Indonesia (30 Soal - 42.5 Menit)</option>
+                        <option value="Literasi Bahasa Inggris">Literasi Bahasa Inggris (20 Soal - 20 Menit)</option>
+                        <option value="Penalaran Matematika">Penalaran Matematika (20 Soal - 42.5 Menit)</option>
                     </optgroup>
                 </select>
                 <button id="btn-practice" class="btn-primary" onclick="startExam('practice')">Mulai Latihan</button>
             </div>
             
             <div class="mode-card" style="border:2px solid var(--primary); background:#f0f7ff;">
-                <h3 style="color:var(--primary);">B. Simulasi Full</h3>
-                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">180 Soal | Durasi Asli</p>
+                <h3 style="color:var(--primary);">B. Simulasi Full UTBK</h3>
+                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Semua Subtes | 195 Menit</p>
                 <button id="btn-full" class="btn-primary" onclick="startExam('full')">Mulai Simulasi Full</button>
             </div>
         </div>
@@ -98,7 +103,7 @@
     <div id="exam-container" class="hidden">
         <div style="display:flex; justify-content:space-between; margin-bottom:15px; background:white; padding:15px; border-radius:8px;">
             <b id="exam-title">Ujian</b>
-            <b id="timer" style="color:red;">00:00:00</b>
+            <b id="timer" style="color:red; font-size:1.2rem;">00:00:00</b>
         </div>
         <div id="question-box" class="question-area">Loading...</div>
         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
@@ -115,12 +120,26 @@
         <div class="mode-card" style="margin:0 auto;">
             <h1>Skor Kamu</h1>
             <h2 id="final-score" style="font-size:3.5rem; color:var(--primary); margin:20px 0;">0</h2>
+            <p id="final-msg"></p>
             <button class="btn-primary" onclick="location.reload()">Kembali</button>
         </div>
     </div>
 
     <script>
-        // AUTH
+        // --- KONFIGURASI ATURAN UTBK (SESUAI PERMINTAAN) ---
+        const examRules = {
+            "Penalaran Induktif":           { limit: 10, time: 10 * 60 },
+            "Penalaran Deduktif":           { limit: 10, time: 10 * 60 },
+            "Penalaran Kuantitatif":        { limit: 10, time: 10 * 60 },
+            "Pengetahuan & Pemahaman Umum": { limit: 20, time: 15 * 60 },
+            "Pemahaman Bacaan & Menulis":   { limit: 20, time: 25 * 60 },
+            "Pengetahuan Kuantitatif":      { limit: 20, time: 20 * 60 },
+            "Literasi Bahasa Indonesia":    { limit: 30, time: 42.5 * 60 },
+            "Literasi Bahasa Inggris":      { limit: 20, time: 20 * 60 },
+            "Penalaran Matematika":         { limit: 20, time: 42.5 * 60 }
+        };
+
+        // AUTH LOGIC
         function switchMode(m) {
             document.getElementById('form-login').classList.toggle('hidden', m !== 'login');
             document.getElementById('form-register').classList.toggle('hidden', m !== 'register');
@@ -129,12 +148,11 @@
         }
         async function doLogin() {
             const email = document.getElementById('l-email').value;
-            // Simulasi API Login
             try {
                 await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email}) });
                 localStorage.setItem('user', JSON.stringify({name:"Peserta", email}));
                 showDash({name:"Peserta"});
-            } catch(e) { alert("Login error"); }
+            } catch(e) { alert("Login error (Check Server)"); }
         }
         function doRegister() { alert("Daftar Sukses!"); switchMode('login'); }
         function showDash(u) {
@@ -146,31 +164,37 @@
         function logout() { localStorage.clear(); location.reload(); }
         if(localStorage.getItem('user')) showDash(JSON.parse(localStorage.getItem('user')));
 
-        // UJIAN
+        // EXAM LOGIC
         let questions = [], answers = [], idx = 0, timerVal;
 
         async function startExam(mode) {
-            // PERBAIKAN: Menggunakan ID langsung agar tidak error selector
             const btn = document.getElementById(mode === 'practice' ? 'btn-practice' : 'btn-full');
             const cat = document.getElementById('mapel').value;
             
-            // Ubah teks tombol (Indikator loading)
-            if(btn) btn.innerText = "Sedang Memuat...";
+            if(btn) btn.innerText = "Menyiapkan Soal...";
 
-            let url = `/api/questions?mode=${mode}`;
+            // Tentukan Limit & Waktu berdasarkan aturan
+            let limit = 20; 
+            let duration = 20 * 60; // Default
+
+            if (mode === 'practice' && examRules[cat]) {
+                limit = examRules[cat].limit;
+                duration = examRules[cat].time;
+            } else if (mode === 'full') {
+                limit = 155; // Total soal full
+                duration = 195 * 60; // 195 menit
+            }
+
+            // Request ke API dengan limit
+            let url = `/api/questions?mode=${mode}&limit=${limit}`;
             if(mode === 'practice') url += `&category=${encodeURIComponent(cat)}`;
 
             try {
                 const res = await fetch(url);
                 const data = await res.json();
                 
-                if(!data || data.length === 0) { 
-                    alert("Maaf, soal belum tersedia. Server akan memberikan soal acak."); 
-                    // Jangan return, biarkan lanjut (atau reload jika fatal)
-                }
-                
-                // Jika server mengirim array kosong, kita punya data dummy darurat di sini
-                questions = (data && data.length > 0) ? data : [{question:"Contoh Soal Darurat (Database Kosong)", options:{A:"1",B:"2",C:"3",D:"4",E:"5"}, correct:"A"}];
+                // Gunakan data, atau buat dummy darurat jika kosong agar tidak macet
+                questions = (data && data.length > 0) ? data : [{question:`Maaf, database untuk ${cat} kosong. Ini soal contoh.`, options:{A:"A",B:"B"}, correct:"A"}];
                 
                 answers = new Array(questions.length).fill(null); idx = 0;
                 
@@ -179,11 +203,11 @@
                 document.getElementById('exam-title').innerText = mode === 'full' ? "Simulasi Full" : cat;
                 
                 renderQ(); renderNav();
-                startTimer(mode === 'full' ? 195*60 : 20*60);
+                startTimer(duration); // Gunakan durasi yang sudah diset
                 
             } catch(e) { 
-                alert("Gagal koneksi: " + e.message); 
-                if(btn) btn.innerText = mode === 'practice' ? "Mulai Latihan" : "Mulai Simulasi Full";
+                alert("Gagal koneksi. Coba refresh."); 
+                if(btn) btn.innerText = "Mulai Latihan";
             }
         }
 
@@ -213,19 +237,20 @@
             const el = document.getElementById('timer');
             clearInterval(timerVal);
             timerVal = setInterval(() => {
-                let m = Math.floor(s/60), sec = s%60;
+                let m = Math.floor(s/60), sec = Math.floor(s%60); // Fix desimal
                 let h = Math.floor(m/60); m = m%60;
                 el.innerText = `${h}:${m<10?'0'+m:m}:${sec<10?'0'+sec:sec}`;
                 if(--s < 0) { clearInterval(timerVal); submitExam(); }
             }, 1000);
         }
         function submitExam() {
-            if(!confirm("Selesai?")) return;
+            if(!confirm("Selesai mengerjakan?")) return;
             clearInterval(timerVal);
             let b = 0; questions.forEach((q,i) => { if(answers[i] === q.correct) b++; });
             document.getElementById('exam-container').classList.add('hidden');
             document.getElementById('result-page').classList.remove('hidden');
             document.getElementById('final-score').innerText = Math.round((b/questions.length)*1000);
+            document.getElementById('final-msg').innerText = `Benar ${b} dari ${questions.length} Soal`;
         }
     </script>
 </body>
