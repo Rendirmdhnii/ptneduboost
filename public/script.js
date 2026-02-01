@@ -4,7 +4,6 @@ let appState = {
     user: { name: '', school: '' }
 };
 
-// --- AUTH & INIT ---
 function saveUserInfo() {
     const name = document.getElementById('input-name').value;
     const school = document.getElementById('input-school').value;
@@ -25,7 +24,6 @@ function confirmPracticeStart() {
 function startFullMode() { fetchQuestions('full'); }
 
 async function fetchQuestions(mode, cat = null) {
-    // Menggunakan URL lengkap ke backend port 3000
     let url = `http://localhost:3000/api/questions?mode=${mode}` + (cat ? `&category=${cat}` : '');
 
     try {
@@ -61,22 +59,18 @@ function setupExamUI() {
     loadQuestion(0);
 }
 
-// --- CORE LOGIC ---
 function loadQuestion(idx) {
     appState.currentIndex = idx;
     const q = appState.questions[idx];
     document.getElementById('section-title').innerText = `${q.category_name} - No. ${idx+1}`;
     
-    // Highlight Nav Grid
     document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
     const navItem = document.getElementById(`nav-${idx}`);
     if(navItem) navItem.classList.add('active');
 
-    // Buttons
     document.getElementById('btn-prev').disabled = (idx === 0);
     document.getElementById('btn-next').disabled = (idx === appState.questions.length - 1);
 
-    // Render HTML Soal
     let html = `<div class="q-text">${q.question}</div><div class="options-container">`;
     if(q.options) {
         for (const [key, val] of Object.entries(q.options)) {
