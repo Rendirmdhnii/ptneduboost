@@ -2,7 +2,7 @@
   "name": "ptneduboost",
   "version": "1.0.0",
   "description": "Backend Server UTBK",
-  "main": "api/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
