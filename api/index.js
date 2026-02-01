@@ -20,32 +20,46 @@ function getQuestions() {
 
 app.get('/api/questions', (req, res) => {
     try {
-        // MENERIMA PARAMETER 'LIMIT' DARI FRONTEND
         const { mode, category, limit } = req.query;
         let allQuestions = getQuestions();
         let result = [];
 
-        // MODE LATIHAN (PER SUBTES)
         if (mode === 'practice') {
-            const keyword = category ? category.split(' ')[0].toLowerCase() : '';
-            
-            // Filter berdasarkan kata kunci
-            const filtered = allQuestions.filter(q => 
-                q.category && typeof q.category === 'string' && q.category.toLowerCase().includes(keyword)
-            );
+            const catLower = category ? category.toLowerCase() : '';
+            let filtered = [];
 
-            // Tentukan jumlah soal (Default 20 jika tidak diminta)
+            // --- LOGIKA FILTER PINTAR ---
+            
+            // KASUS 1: LITERASI (Harus Spesifik agar tidak campur)
+            if (catLower.includes('literasi')) {
+                // Cari yang mengandung nama LENGKAP. 
+                // Contoh: "literasi bahasa inggris" hanya akan cocok dengan soal yang labelnya ada "inggris"-nya.
+                filtered = allQuestions.filter(q => 
+                    q.category && q.category.toLowerCase().includes(catLower)
+                );
+            } 
+            // KASUS 2: PENALARAN (Boleh Umum)
+            // Agar "Penalaran Induktif" tetap bisa menarik soal "Penalaran Umum"
+            else {
+                const firstWord = catLower.split(' ')[0]; // Ambil "penalaran" saja
+                filtered = allQuestions.filter(q => 
+                    q.category && q.category.toLowerCase().includes(firstWord)
+                );
+            }
+
+            // --- ATUR JUMLAH SOAL ---
             const qty = limit ? parseInt(limit) : 20;
 
             if (filtered.length > 0) {
                 result = filtered.sort(() => 0.5 - Math.random()).slice(0, qty);
             } else {
-                // Plan B: Ambil acak jika kategori kosong
+                // Plan B: Jika kosong, ambil acak (Daripada error)
+                console.log(`Soal spesifik ${category} kosong. Mengambil acak.`);
                 result = allQuestions.sort(() => 0.5 - Math.random()).slice(0, qty);
             }
         } 
-        // MODE FULL (SIMULASI UTBK - 155 Soal Total)
         else {
+            // MODE FULL (155 Soal)
             result = allQuestions.slice(0, 155); 
         }
         
