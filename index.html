@@ -6,7 +6,7 @@
     <title>PAHAMIN - Simulasi UTBK</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --white: #fff; }
+        :root { --primary: #0056b3; --bg: #f4f7f6; --text: #333; --white: #fff; --green: #28a745; --red: #dc3545; }
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter',sans-serif; }
         body { background:var(--bg); color:var(--text); min-height:100vh; }
         .hidden { display:none !important; }
@@ -36,6 +36,16 @@
         .nav-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:10px; }
         .nav-item { padding:10px; background:#fff; border:1px solid #ccc; text-align:center; cursor:pointer; border-radius:4px; font-weight:bold; }
         .nav-item.active { background:var(--primary); color:white; }
+
+        /* REVIEW STYLE (PEMBAHASAN) */
+        .review-item { background:white; padding:20px; border-radius:10px; margin-bottom:15px; border-left:5px solid #ccc; text-align:left; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
+        .review-item.correct { border-left-color: var(--green); }
+        .review-item.wrong { border-left-color: var(--red); }
+        .status-badge { display:inline-block; padding:4px 10px; border-radius:20px; color:white; font-size:0.8rem; font-weight:bold; margin-bottom:10px; }
+        .bg-green { background:var(--green); }
+        .bg-red { background:var(--red); }
+        .explanation-box { background:#f8f9fa; padding:15px; border-radius:8px; margin-top:15px; border:1px solid #e9ecef; font-size:0.95rem; line-height:1.5; }
+        .explanation-title { font-weight:bold; color:var(--primary); margin-bottom:5px; display:block; }
     </style>
 </head>
 <body>
@@ -71,7 +81,6 @@
             <div class="mode-card">
                 <h3>A. Latihan Per Subtes</h3>
                 <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Waktu & Jumlah Soal disesuaikan standar UTBK</p>
-                
                 <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
                     <optgroup label="TPS - Penalaran Umum">
                         <option value="Penalaran Induktif">Penalaran Induktif (10 Soal - 10 Menit)</option>
@@ -116,30 +125,37 @@
         </div>
     </div>
 
-    <div id="result-page" class="hidden" style="margin-top:100px; text-align:center;">
-        <div class="mode-card" style="margin:0 auto;">
-            <h1>Skor Kamu</h1>
-            <h2 id="final-score" style="font-size:3.5rem; color:var(--primary); margin:20px 0;">0</h2>
-            <p id="final-msg"></p>
-            <button class="btn-primary" onclick="location.reload()">Kembali</button>
+    <div id="result-page" class="hidden" style="margin-top:100px; text-align:center; padding-bottom:50px;">
+        <div style="width:100%; max-width:800px; margin:0 auto;">
+            <div class="mode-card">
+                <h1>Skor Kamu</h1>
+                <h2 id="final-score" style="font-size:3.5rem; color:var(--primary); margin:20px 0;">0</h2>
+                <p id="final-msg" style="margin-bottom:20px;"></p>
+                <button class="btn-primary" onclick="location.reload()">Kembali ke Menu</button>
+            </div>
+
+            <div style="margin-top:30px; text-align:left;">
+                <h3 style="margin-bottom:15px;">Pembahasan & Kunci Jawaban</h3>
+                <div id="review-list"></div>
+            </div>
         </div>
     </div>
 
     <script>
-        // --- KONFIGURASI ATURAN UTBK (SESUAI PERMINTAAN) ---
+        // CONFIG
         const examRules = {
-            "Penalaran Induktif":           { limit: 10, time: 10 * 60 },
-            "Penalaran Deduktif":           { limit: 10, time: 10 * 60 },
-            "Penalaran Kuantitatif":        { limit: 10, time: 10 * 60 },
+            "Penalaran Induktif": { limit: 10, time: 10 * 60 },
+            "Penalaran Deduktif": { limit: 10, time: 10 * 60 },
+            "Penalaran Kuantitatif": { limit: 10, time: 10 * 60 },
             "Pengetahuan & Pemahaman Umum": { limit: 20, time: 15 * 60 },
-            "Pemahaman Bacaan & Menulis":   { limit: 20, time: 25 * 60 },
-            "Pengetahuan Kuantitatif":      { limit: 20, time: 20 * 60 },
-            "Literasi Bahasa Indonesia":    { limit: 30, time: 42.5 * 60 },
-            "Literasi Bahasa Inggris":      { limit: 20, time: 20 * 60 },
-            "Penalaran Matematika":         { limit: 20, time: 42.5 * 60 }
+            "Pemahaman Bacaan & Menulis": { limit: 20, time: 25 * 60 },
+            "Pengetahuan Kuantitatif": { limit: 20, time: 20 * 60 },
+            "Literasi Bahasa Indonesia": { limit: 30, time: 42.5 * 60 },
+            "Literasi Bahasa Inggris": { limit: 20, time: 20 * 60 },
+            "Penalaran Matematika": { limit: 20, time: 42.5 * 60 }
         };
 
-        // AUTH LOGIC
+        // AUTH
         function switchMode(m) {
             document.getElementById('form-login').classList.toggle('hidden', m !== 'login');
             document.getElementById('form-register').classList.toggle('hidden', m !== 'register');
@@ -152,7 +168,7 @@
                 await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email}) });
                 localStorage.setItem('user', JSON.stringify({name:"Peserta", email}));
                 showDash({name:"Peserta"});
-            } catch(e) { alert("Login error (Check Server)"); }
+            } catch(e) { alert("Login Error"); }
         }
         function doRegister() { alert("Daftar Sukses!"); switchMode('login'); }
         function showDash(u) {
@@ -164,59 +180,47 @@
         function logout() { localStorage.clear(); location.reload(); }
         if(localStorage.getItem('user')) showDash(JSON.parse(localStorage.getItem('user')));
 
-        // EXAM LOGIC
+        // EXAM VARS
         let questions = [], answers = [], idx = 0, timerVal;
 
         async function startExam(mode) {
             const btn = document.getElementById(mode === 'practice' ? 'btn-practice' : 'btn-full');
             const cat = document.getElementById('mapel').value;
-            
             if(btn) btn.innerText = "Menyiapkan Soal...";
 
-            // Tentukan Limit & Waktu berdasarkan aturan
-            let limit = 20; 
-            let duration = 20 * 60; // Default
-
+            let limit = 20, duration = 20 * 60;
             if (mode === 'practice' && examRules[cat]) {
                 limit = examRules[cat].limit;
                 duration = examRules[cat].time;
             } else if (mode === 'full') {
-                limit = 155; // Total soal full
-                duration = 195 * 60; // 195 menit
+                limit = 155; duration = 195 * 60;
             }
 
-            // Request ke API dengan limit
             let url = `/api/questions?mode=${mode}&limit=${limit}`;
             if(mode === 'practice') url += `&category=${encodeURIComponent(cat)}`;
 
             try {
                 const res = await fetch(url);
                 const data = await res.json();
-                
-                // Gunakan data, atau buat dummy darurat jika kosong agar tidak macet
-                questions = (data && data.length > 0) ? data : [{question:`Maaf, database untuk ${cat} kosong. Ini soal contoh.`, options:{A:"A",B:"B"}, correct:"A"}];
-                
+                questions = (data && data.length > 0) ? data : [{question:"Data kosong/Error load.", options:{A:"-",B:"-"}, correct:"A", explanation:"-"}];
                 answers = new Array(questions.length).fill(null); idx = 0;
                 
                 document.getElementById('landing-page').classList.add('hidden');
                 document.getElementById('exam-container').classList.remove('hidden');
                 document.getElementById('exam-title').innerText = mode === 'full' ? "Simulasi Full" : cat;
                 
-                renderQ(); renderNav();
-                startTimer(duration); // Gunakan durasi yang sudah diset
-                
-            } catch(e) { 
-                alert("Gagal koneksi. Coba refresh."); 
-                if(btn) btn.innerText = "Mulai Latihan";
-            }
+                renderQ(); renderNav(); startTimer(duration);
+            } catch(e) { alert("Gagal koneksi."); if(btn) btn.innerText = "Mulai Latihan"; }
         }
 
         function renderQ() {
             const q = questions[idx];
             let h = `<p style="margin-bottom:20px;"><b>No ${idx+1}.</b> ${q.question || q.text}</p>`;
             ['A','B','C','D','E'].forEach(opt => {
-                const sel = answers[idx] === opt ? 'selected' : '';
-                h += `<div class="option ${sel}" onclick="pilih('${opt}')"><div class="opt-label">${opt}</div><div>${q.options[opt]||''}</div></div>`;
+                if(q.options[opt]) {
+                    const sel = answers[idx] === opt ? 'selected' : '';
+                    h += `<div class="option ${sel}" onclick="pilih('${opt}')"><div class="opt-label">${opt}</div><div>${q.options[opt]}</div></div>`;
+                }
             });
             document.getElementById('question-box').innerHTML = h;
             renderNav();
@@ -234,23 +238,65 @@
             });
         }
         function startTimer(s) {
-            const el = document.getElementById('timer');
-            clearInterval(timerVal);
+            const el = document.getElementById('timer'); clearInterval(timerVal);
             timerVal = setInterval(() => {
-                let m = Math.floor(s/60), sec = Math.floor(s%60); // Fix desimal
+                let m = Math.floor(s/60), sec = Math.floor(s%60);
                 let h = Math.floor(m/60); m = m%60;
                 el.innerText = `${h}:${m<10?'0'+m:m}:${sec<10?'0'+sec:sec}`;
                 if(--s < 0) { clearInterval(timerVal); submitExam(); }
             }, 1000);
         }
+
+        // --- FUNGSI SUBMIT & GENERATE PEMBAHASAN ---
         function submitExam() {
             if(!confirm("Selesai mengerjakan?")) return;
             clearInterval(timerVal);
-            let b = 0; questions.forEach((q,i) => { if(answers[i] === q.correct) b++; });
+            
+            let correctCount = 0;
+            let reviewHTML = "";
+
+            questions.forEach((q, i) => {
+                const myAns = answers[i] || "-"; // Jika tidak dijawab, tulis "-"
+                const isCorrect = myAns === q.correct;
+                if(isCorrect) correctCount++;
+
+                // Buat Kotak Review per Soal
+                reviewHTML += `
+                    <div class="review-item ${isCorrect ? 'correct' : 'wrong'}">
+                        <div style="display:flex; justify-content:space-between; align-items:center;">
+                            <b>Soal No ${i+1}</b>
+                            <span class="status-badge ${isCorrect ? 'bg-green' : 'bg-red'}">
+                                ${isCorrect ? 'BENAR' : 'SALAH'}
+                            </span>
+                        </div>
+                        <p style="margin:10px 0; font-size:0.95rem;">${q.question}</p>
+                        
+                        <div style="font-size:0.9rem; margin-bottom:10px;">
+                            <div>Jawaban Kamu: <b>${myAns}</b> ${isCorrect ? '✅' : '❌'}</div>
+                            ${!isCorrect ? `<div style="color:var(--green); font-weight:bold;">Kunci Jawaban: ${q.correct}</div>` : ''}
+                        </div>
+
+                        <div class="explanation-box">
+                            <span class="explanation-title">💡 Pembahasan:</span>
+                            ${q.explanation || "Tidak ada pembahasan untuk soal ini."}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // Tampilkan Halaman Hasil
             document.getElementById('exam-container').classList.add('hidden');
             document.getElementById('result-page').classList.remove('hidden');
-            document.getElementById('final-score').innerText = Math.round((b/questions.length)*1000);
-            document.getElementById('final-msg').innerText = `Benar ${b} dari ${questions.length} Soal`;
+            
+            // Isi Skor
+            document.getElementById('final-score').innerText = Math.round((correctCount/questions.length)*1000);
+            document.getElementById('final-msg').innerText = `Kamu benar ${correctCount} dari ${questions.length} soal.`;
+            
+            // Isi List Pembahasan
+            document.getElementById('review-list').innerHTML = reviewHTML;
+            
+            // Scroll ke atas agar user lihat skor dulu
+            window.scrollTo(0,0);
         }
     </script>
 </body>
