@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika pemerintah menaikkan pajak karbon, maka industri manufaktur akan beralih ke energi terbarukan. Jika industri beralih ke energi terbarukan, maka emisi gas rumah kaca akan turun drastis. Saat ini, emisi gas rumah kaca tidak turun drastis. Simpulan yang paling tepat adalah...",
     "options": {
@@ -16,7 +16,7 @@
   },
   {
     "id": 2,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Semua startup unicorn memiliki valuasi di atas 1 miliar dolar. Sebagian perusahaan teknologi di Jakarta adalah startup unicorn. Simpulan yang paling tepat adalah...",
     "options": {
@@ -31,7 +31,7 @@
   },
   {
     "id": 3,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Peningkatan penggunaan kendaraan listrik (EV) dipercaya dapat mengurangi polusi udara kota secara signifikan. Namun, data terbaru menunjukkan bahwa meskipun penjualan EV meningkat 50% tahun ini, tingkat polusi udara di kota tersebut tetap sama. Manakah pernyataan berikut yang paling mungkin MENJELASKAN paradoks di atas?",
     "options": {
@@ -46,7 +46,7 @@
   },
   {
     "id": 4,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Penelitian menunjukkan bahwa orang yang rutin sarapan pagi memiliki konsentrasi kerja yang lebih tinggi. Andi memiliki konsentrasi kerja yang rendah hari ini. Simpulan yang PALING MUNGKIN benar adalah...",
     "options": {
@@ -61,7 +61,7 @@
   },
   {
     "id": 5,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Angka 4, 6, 9, 13, 18, X, Y. Nilai yang tepat untuk menggantikan X dan Y adalah...",
     "options": {
@@ -76,7 +76,7 @@
   },
   {
     "id": 6,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Tidak ada atlet profesional yang merokok. Beberapa mahasiswa adalah atlet profesional. Simpulan yang benar adalah...",
     "options": {
@@ -91,7 +91,7 @@
   },
   {
     "id": 7,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika hujan deras turun, maka jalanan macet. Jika jalanan macet, maka saya terlambat ke kantor. Kemarin saya tidak terlambat ke kantor. Simpulan yang valid adalah...",
     "options": {
@@ -106,7 +106,7 @@
   },
   {
     "id": 8,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "A, B, C, D, dan E disusun di rak. A kiri B. C ujung kanan. D tidak boleh sebelah B. E di tengah. Urutan yang mungkin adalah...",
     "options": {
@@ -121,7 +121,7 @@
   },
   {
     "id": 9,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Di sebuah desa, jika panen padi melimpah, maka petani membeli motor. Jika petani membeli motor, penjualan bensin naik. Tahun ini penjualan bensin tidak naik. Simpulan...",
     "options": {
@@ -136,7 +136,7 @@
   },
   {
     "id": 10,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Semua anggota Koperasi X adalah petani. Sebagian warga Desa Suka Maju adalah anggota Koperasi X. Simpulan...",
     "options": {
@@ -151,7 +151,7 @@
   },
   {
     "id": 11,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Semua anggota dewan direksi hadir dalam rapat tahunan. Tidak ada manajer pemasaran yang hadir dalam rapat tahunan. Sebagian peserta rapat tahunan membawa laporan keuangan. Simpulan yang PASTI BENAR adalah...",
     "options": {
@@ -166,7 +166,7 @@
   },
   {
     "id": 12,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika X adalah negara maju, maka tingkat korupsinya rendah. Jika tingkat korupsi rendah, maka investasi asing meningkat. Saat ini, investasi asing di negara X tidak meningkat. Simpulan...",
     "options": {
@@ -181,7 +181,7 @@
   },
   {
     "id": 13,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Lima mahasiswa (A, B, C, D, E) duduk mengelilingi meja bundar. A duduk berseberangan dengan C. E duduk di antara C dan D. B duduk di sebelah kiri A. Siapakah yang duduk di sebelah kanan A?",
     "options": {
@@ -196,7 +196,7 @@
   },
   {
     "id": 14,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Perhatikan deret huruf berikut: B, E, H, K, N, ... Huruf selanjutnya adalah...",
     "options": {
@@ -211,7 +211,7 @@
   },
   {
     "id": 15,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Argumen: 'Menghapus ujian nasional akan menurunkan standar pendidikan.' Manakah pernyataan yang paling MEMPERLEMAH argumen tersebut?",
     "options": {
@@ -226,7 +226,7 @@
   },
   {
     "id": 16,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Deret: 3, 6, 12, 15, 30, 33, ... Angka selanjutnya adalah...",
     "options": {
@@ -241,7 +241,7 @@
   },
   {
     "id": 17,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Tidak ada pemalas yang sukses. Semua pengusaha adalah orang sukses. Simpulan yang valid adalah...",
     "options": {
@@ -256,7 +256,7 @@
   },
   {
     "id": 18,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika p > 0 dan q < 0, manakah dari berikut ini yang hasilnya PASTI NEGATIF?",
     "options": {
@@ -271,7 +271,7 @@
   },
   {
     "id": 19,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Semua kertas yang digunakan untuk skripsi harus berukuran A4. Sebagian kertas di toko Pak Budi berukuran A4. Simpulan...",
     "options": {
@@ -286,7 +286,7 @@
   },
   {
     "id": 20,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Kode: MERAH = 13-5-18-1-8. PUTIH = 16-21-20-9-8. Maka HITAM = ...",
     "options": {
@@ -301,7 +301,7 @@
   },
   {
     "id": 21,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Sebagian siswa kelas 12 mengikuti bimbel. Semua siswa yang mengikuti bimbel ingin masuk PTN. Simpulan yang tepat adalah...",
     "options": {
@@ -316,7 +316,7 @@
   },
   {
     "id": 22,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Deret bilangan: 2, 3, 5, 9, 17, ... Angka selanjutnya adalah...",
     "options": {
@@ -331,7 +331,7 @@
   },
   {
     "id": 23,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika harga BBM dunia turun, pemerintah akan menurunkan harga pertalite atau memberikan subsidi silang. Pemerintah tidak menurunkan harga pertalite. Simpulan...",
     "options": {
@@ -346,7 +346,7 @@
   },
   {
     "id": 24,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Semua reptil berdarah dingin. Tidak ada mamalia yang berdarah dingin. Simpulan yang benar adalah...",
     "options": {
@@ -361,7 +361,7 @@
   },
   {
     "id": 25,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika Tono lulus ujian, ia akan dibelikan motor. Jika Tono dibelikan motor, ia akan sering bepergian. Tono tidak sering bepergian. Simpulan...",
     "options": {
@@ -376,7 +376,7 @@
   },
   {
     "id": 26,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Kode: KITA = 11-9-20-1. Maka KAMI = ...",
     "options": {
@@ -391,7 +391,7 @@
   },
   {
     "id": 27,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "6 pekerja dapat menyelesaikan rumah dalam 30 hari. Berapa hari yang dibutuhkan jika hanya ada 4 pekerja?",
     "options": {
@@ -406,7 +406,7 @@
   },
   {
     "id": 28,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Pernyataan: 'Semua mahasiswa baru wajib mengikuti PKKMB'. Negasi (ingkaran) dari pernyataan tersebut adalah...",
     "options": {
@@ -421,7 +421,7 @@
   },
   {
     "id": 29,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Data menunjukkan negara dengan konsumsi cokelat tinggi memiliki jumlah peraih Nobel yang banyak. Simpulan yang paling logis namun kritis adalah...",
     "options": {
@@ -436,7 +436,7 @@
   },
   {
     "id": 30,
-    "category": "PU",
+    "category": "Penalaran Umum",
     "category_name": "Penalaran Umum",
     "question": "Jika 3 < x < 7 dan 4 < y < 8, maka rentang nilai x + y adalah...",
     "options": {
@@ -451,7 +451,7 @@
   }
 ,{
     "id": 31,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Cermati kalimat berikut! 'Pemerintah terus berupaya meminimalisir dampak resesi ekonomi dengan memberikan stimulus fiskal kepada umkm.' Kesalahan penulisan kata dalam kalimat di atas adalah...",
     "options": {
@@ -466,7 +466,7 @@
   },
   {
     "id": 32,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah penulisan judul karangan berikut yang paling tepat sesuai dengan PUEBI?",
     "options": {
@@ -481,7 +481,7 @@
   },
   {
     "id": 33,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Kalimat manakah yang menggunakan tanda baca koma (,) secara TEPAT?",
     "options": {
@@ -496,7 +496,7 @@
   },
   {
     "id": 34,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Pertimbangkan kalimat berikut: 'Rumah di mana ia tinggal sangat dekat dengan danau.' Perbaikan kalimat tersebut agar menjadi kalimat efektif adalah...",
     "options": {
@@ -511,7 +511,7 @@
   },
   {
     "id": 35,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah kalimat yang menggunakan kata serapan dengan ejaan yang BAKU?",
     "options": {
@@ -526,7 +526,7 @@
   },
   {
     "id": 36,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penggunaan imbuhan 'me-kan' yang TIDAK tepat terdapat pada kalimat...",
     "options": {
@@ -541,7 +541,7 @@
   },
   {
     "id": 37,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah kalimat yang TIDAK efektif karena mengandung pleonasme (pemborosan kata)?",
     "options": {
@@ -556,7 +556,7 @@
   },
   {
     "id": 38,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penulisan kata depan 'di' dan imbuhan 'di-' yang BENAR terdapat pada...",
     "options": {
@@ -571,7 +571,7 @@
   },
   {
     "id": 39,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Kalimat berikut yang memiliki pola S-P-O-K adalah...",
     "options": {
@@ -586,7 +586,7 @@
   },
   {
     "id": 40,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah penulisan gabungan kata yang TEPAT?",
     "options": {
@@ -601,7 +601,7 @@
   },
   {
     "id": 41,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Kata hubung (konjungsi) intrakalimat yang menyatakan 'pertentangan' adalah...",
     "options": {
@@ -616,7 +616,7 @@
   },
   {
     "id": 42,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penggunaan tanda titik dua (:) yang TEPAT terdapat pada kalimat...",
     "options": {
@@ -631,7 +631,7 @@
   },
   {
     "id": 43,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah kalimat yang menggunakan kata berimbuhan serapan secara TEPAT?",
     "options": {
@@ -646,7 +646,7 @@
   },
   {
     "id": 44,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penulisan partikel 'pun' yang TEPAT terdapat pada...",
     "options": {
@@ -661,7 +661,7 @@
   },
   {
     "id": 45,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Kalimat berikut yang logis (masuk akal) adalah...",
     "options": {
@@ -676,7 +676,7 @@
   },
   {
     "id": 46,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penulisan bilangan yang BENAR sesuai PUEBI adalah...",
     "options": {
@@ -691,7 +691,7 @@
   },
   {
     "id": 47,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Manakah kalimat yang menggunakan konjungsi korelatif secara TEPAT?",
     "options": {
@@ -706,7 +706,7 @@
   },
   {
     "id": 48,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penggunaan huruf miring yang TEPAT adalah...",
     "options": {
@@ -721,7 +721,7 @@
   },
   {
     "id": 49,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Pilihlah kalimat dengan struktur yang paling efektif!",
     "options": {
@@ -736,7 +736,7 @@
   },
   {
     "id": 50,
-    "category": "PBM",
+    "category": "Pemahaman Bacaan & Menulis",
     "category_name": "Pemahaman Bacaan & Menulis",
     "question": "Penulisan nama geografi yang SALAH terdapat pada...",
     "options": {
@@ -751,7 +751,7 @@
   }
 , {
     "id": 201,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Bacalah kalimat berikut: 'Disrupsi teknologi tidak hanya mengubah lanskap industri secara fundamental, tetapi juga merekonstruksi pola interaksi sosial yang selama ini dianggap mapan.' Manakah pernyataan yang paling tepat meringkas inti kalimat di atas?",
     "options": {
@@ -766,7 +766,7 @@
   },
   {
     "id": 202,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Kata 'mapan' dalam frasa 'pola interaksi sosial yang selama ini dianggap mapan' memiliki padanan makna yang paling dekat dengan...",
     "options": {
@@ -781,7 +781,7 @@
   },
   {
     "id": 203,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Manakah dari kata-kata berikut yang penulisannya TIDAK sesuai dengan kaidah peluluhan fonem (K-T-S-P)?",
     "options": {
@@ -796,7 +796,7 @@
   },
   {
     "id": 204,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Manakah kalimat yang memiliki pola sintaksis yang SAMA dengan: 'Mahasiswa yang aktif berorganisasi sering memiliki kemampuan kepemimpinan yang baik'?",
     "options": {
@@ -811,7 +811,7 @@
   },
   {
     "id": 205,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Penggunaan tanda baca koma (,) yang TEPAT terdapat pada kalimat...",
     "options": {
@@ -826,7 +826,7 @@
   },
   {
     "id": 206,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Frasa 'kambing hitam' dalam kalimat 'Ia selalu dijadikan kambing hitam atas kesalahan timnya' memiliki makna...",
     "options": {
@@ -841,7 +841,7 @@
   },
   {
     "id": 207,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Mana yang merupakan kalimat EFEKTIF?",
     "options": {
@@ -856,7 +856,7 @@
   },
   {
     "id": 208,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Sinonim kata 'eklektik' dalam konteks arsitektur adalah...",
     "options": {
@@ -871,7 +871,7 @@
   },
   {
     "id": 209,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Kalimat manakah yang mengandung kata berimbuhan 'ke-an' yang bermakna 'terkena' (adversatif)?",
     "options": {
@@ -886,7 +886,7 @@
   },
   {
     "id": 210,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Penulisan gabungan kata yang SALAH terdapat pada...",
     "options": {
@@ -901,7 +901,7 @@
   },
   {
     "id": 211,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Konjungsi yang tepat untuk: 'Ekonomi negara sedang lesu, ... pemerintah tetap optimis target tercapai.'",
     "options": {
@@ -916,7 +916,7 @@
   },
   {
     "id": 212,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Istilah 'implikasi' dalam kalimat 'Kebijakan baru tersebut memiliki implikasi luas' berarti...",
     "options": {
@@ -931,7 +931,7 @@
   },
   {
     "id": 213,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Manakah kalimat yang menggunakan kata 'di' secara TEPAT?",
     "options": {
@@ -946,7 +946,7 @@
   },
   {
     "id": 214,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Antonim dari kata 'Sporadis' adalah...",
     "options": {
@@ -961,7 +961,7 @@
   },
   {
     "id": 215,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Kalimat yang berfungsi untuk menjelaskan gagasan utama disebut...",
     "options": {
@@ -976,7 +976,7 @@
   },
   {
     "id": 216,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Penulisan gelar akademik yang BENAR adalah...",
     "options": {
@@ -991,7 +991,7 @@
   },
   {
     "id": 217,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Perubahan makna kata 'senonoh' (dulu: sopan, sekarang: diasosiasikan dengan 'tidak senonoh') disebut...",
     "options": {
@@ -1006,7 +1006,7 @@
   },
   {
     "id": 218,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Kalimat manakah yang mengandung 'ambiguitas'?",
     "options": {
@@ -1021,7 +1021,7 @@
   },
   {
     "id": 219,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Penggunaan kata 'daripada' yang TEPAT adalah...",
     "options": {
@@ -1036,7 +1036,7 @@
   },
   {
     "id": 220,
-    "category": "PPU",
+    "category": "Pengetahuan & Pemahaman Umum",
     "category_name": "Pengetahuan & Pemahaman Umum",
     "question": "Penulisan bentuk ulang kata majemuk yang BENAR adalah...",
     "options": {
@@ -1051,7 +1051,7 @@
   }
 , {
     "id": 301,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Jika 0 < x < 1, manakah hubungan yang BENAR antara kuantitas P dan Q berikut?\nP = x^2\nQ = x^3",
     "options": {
@@ -1065,7 +1065,7 @@
   },
   {
     "id": 302,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Sebuah segitiga siku-siku memiliki sisi-sisi dengan panjang bilangan bulat. Jika salah satu sisi tegaknya adalah 7, berapakah luas segitiga tersebut?",
     "options": {
@@ -1080,7 +1080,7 @@
   },
   {
     "id": 303,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Operasi ¤ didefinisikan dengan a ¤ b = a(b - 2) + b. Manakah hubungan yang benar antara P dan Q?\nP = 3 ¤ (2 ¤ 4)\nQ = 10",
     "options": {
@@ -1094,7 +1094,7 @@
   },
   {
     "id": 304,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Bilangan ganjil 5 angka yang memuat semua angka 1, 2, 3, 4, 5 ada sebanyak ...",
     "options": {
@@ -1109,7 +1109,7 @@
   },
   {
     "id": 305,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Apakah x > y?\nPutuskan apakah pernyataan (1) dan (2) berikut cukup untuk menjawab pertanyaan tersebut.\n(1) x^2 > y^2\n(2) x - y > 0",
     "options": {
@@ -1124,7 +1124,7 @@
   },
   {
     "id": 306,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Jika f(x - 2) = 3x + 1, maka nilai dari f(1) adalah...",
     "options": {
@@ -1139,7 +1139,7 @@
   },
   {
     "id": 307,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Sebuah baju didiskon dua kali berturut-turut yaitu 50% kemudian 20%. Berapa total diskon sebenarnya dari harga awal?",
     "options": {
@@ -1154,7 +1154,7 @@
   },
   {
     "id": 308,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Diketahui garis g: 2y - 3x = 6. Garis h tegak lurus terhadap garis g dan melalui titik (0, 4). Persamaan garis h adalah...",
     "options": {
@@ -1169,7 +1169,7 @@
   },
   {
     "id": 309,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Manakah di antara bilangan berikut yang nilainya PALING BESAR?",
     "options": {
@@ -1184,7 +1184,7 @@
   },
   {
     "id": 310,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Rata-rata ulangan 5 siswa adalah 70. Jika nilai siswa ke-6 dimasukkan, rata-ratanya menjadi 72. Berapa nilai siswa ke-6?",
     "options": {
@@ -1199,7 +1199,7 @@
   },
   {
     "id": 311,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Jika xy > 0 dan x + y < 0, manakah pernyataan yang PASTI BENAR?",
     "options": {
@@ -1214,7 +1214,7 @@
   },
   {
     "id": 312,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Sebuah persegi panjang memiliki panjang p dan lebar l. Jika panjang ditambah 20% dan lebar dikurang 20%, bagaimana perubahan luasnya?",
     "options": {
@@ -1229,7 +1229,7 @@
   },
   {
     "id": 313,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Diberikan himpunan A = {1, 2, 3} dan B = {3, 4, 5}. Berapakah banyaknya himpunan bagian dari (A U B)?",
     "options": {
@@ -1244,7 +1244,7 @@
   },
   {
     "id": 314,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Jika 2x - y = 8 dan x + 3y = 11, berapakah nilai x + y?",
     "options": {
@@ -1259,7 +1259,7 @@
   },
   {
     "id": 315,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Berapakah nilai x yang memenuhi pertidaksamaan |2x - 1| < 5?",
     "options": {
@@ -1274,7 +1274,7 @@
   },
   {
     "id": 316,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Dalam sebuah kotak terdapat 3 bola merah dan 2 bola biru. Diambil 2 bola sekaligus. Peluang terambilnya 1 merah dan 1 biru adalah...",
     "options": {
@@ -1289,7 +1289,7 @@
   },
   {
     "id": 317,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Sebuah kubus memiliki rusuk 6 cm. Jarak titik A ke titik G (diagonal ruang) adalah...",
     "options": {
@@ -1304,7 +1304,7 @@
   },
   {
     "id": 318,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Apakah z bilangan genap?\n(1) z adalah kelipatan 4\n(2) 2z adalah bilangan genap",
     "options": {
@@ -1319,7 +1319,7 @@
   },
   {
     "id": 319,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Jika p sembarang bilangan real, manakah yang nilainya SELALU positif?",
     "options": {
@@ -1334,7 +1334,7 @@
   },
   {
     "id": 320,
-    "category": "PK",
+    "category": "Pengetahuan Kuantitatif",
     "category_name": "Pengetahuan Kuantitatif",
     "question": "Dua buah dadu dilempar bersamaan. Peluang muncul jumlah mata dadu prima adalah...",
     "options": {
@@ -1349,7 +1349,7 @@
   }
 , {
     "id": 401,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Bacalah teks berikut!\n'Paradoks toleransi menyatakan bahwa jika masyarakat toleran tanpa batas, kemampuan mereka untuk toleran akhirnya akan dihancurkan oleh kelompok intoleran. Oleh karena itu, untuk mempertahankan masyarakat yang toleran, masyarakat harus intoleran terhadap intoleransi.'\n\nManakah pernyataan yang paling tepat menggambarkan asumsi dasar penulis dalam teks di atas?",
     "options": {
@@ -1364,7 +1364,7 @@
   },
   {
     "id": 402,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Kenaikan harga beras tidak hanya disebabkan oleh gagal panen akibat El Nino, tetapi juga oleh rantai distribusi yang panjang dan praktik kartel pangan. Operasi pasar yang dilakukan pemerintah hanya bersifat pemadam kebakaran sesaat.'\n\nApa makna tersirat dari frasa 'bersifat pemadam kebakaran sesaat'?",
     "options": {
@@ -1379,7 +1379,7 @@
   },
   {
     "id": 403,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Fenomena *hustle culture* mengagungkan kerja keras berlebihan sebagai satu-satunya jalan menuju sukses. Padahal, studi menunjukkan bahwa jam kerja yang panjang justru menurunkan produktivitas dan meningkatkan risiko *burnout*.'\n\nTujuan penulis dalam teks tersebut adalah...",
     "options": {
@@ -1394,7 +1394,7 @@
   },
   {
     "id": 404,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Di era digital, algoritma media sosial cenderung menciptakan *echo chamber*, di mana pengguna hanya terpapar informasi yang sejalan dengan pandangan mereka. Hal ini memperparah polarisasi masyarakat.'\n\nManakah ilustrasi yang paling tepat menggambarkan konsep *echo chamber* di atas?",
     "options": {
@@ -1409,7 +1409,7 @@
   },
   {
     "id": 405,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Banyak orang percaya bahwa mobil listrik (EV) adalah solusi tuntas emisi karbon. Namun, proses penambangan nikel dan litium untuk baterai EV juga menghasilkan kerusakan lingkungan yang masif.'\n\nPernyataan yang MEMPERLEMAH argumen penulis adalah...",
     "options": {
@@ -1424,7 +1424,7 @@
   },
   {
     "id": 406,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks Sastra: 'Ia berjalan menunduk, memikul beban yang tak kasat mata di pundaknya. Kota ini terlalu bising untuk kesedihannya yang sunyi. Gedung-gedung pencakar langit itu seolah menertawakan kekerdilannya.'\n\nSuasana yang tergambar dalam kutipan tersebut adalah...",
     "options": {
@@ -1439,7 +1439,7 @@
   },
   {
     "id": 407,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Pendidikan vokasi sering dipandang sebelah mata dibandingkan pendidikan akademik. Padahal, di negara maju seperti Jerman, lulusan vokasi menjadi tulang punggung industri dengan gaji yang kompetitif.'\n\nKeberpihakan penulis dalam teks tersebut ditujukan kepada...",
     "options": {
@@ -1454,7 +1454,7 @@
   },
   {
     "id": 408,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Meskipun kecerdasan buatan (AI) dapat mengotomatisasi pekerjaan repetitif, kreativitas dan empati manusia tetap sulit tergantikan. Oleh karena itu, pendidikan masa depan harus berfokus pada pengembangan *soft skills*.'\n\nSimpulan logis dari teks di atas adalah...",
     "options": {
@@ -1469,7 +1469,7 @@
   },
   {
     "id": 409,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Raja hutan itu mengaum, tapi tak ada satupun binatang yang gemetar. Giginya telah ompong, cakarnya tumpul dimakan usia. Ia hanya simbol masa lalu yang dihormati karena kasihan, bukan karena takut.'\n\nKalimat 'Ia hanya simbol masa lalu' mengandung majas...",
     "options": {
@@ -1484,7 +1484,7 @@
   },
   {
     "id": 410,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Pemerintah berencana memindahkan ibu kota untuk memeratakan ekonomi. Kritik bermunculan terkait anggaran yang membengkak dan potensi kerusakan hutan lindung.'\n\nHubungan antara kalimat pertama dan kedua adalah...",
     "options": {
@@ -1499,7 +1499,7 @@
   },
   {
     "id": 411,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Data BPS menunjukkan penurunan jumlah petani muda. Jika tren ini berlanjut tanpa intervensi teknologi pertanian modern, Indonesia terancam krisis regenerasi petani dalam 10 tahun ke depan.'\n\nApa yang akan terjadi jika teknologi pertanian modern diterapkan secara masif?",
     "options": {
@@ -1514,7 +1514,7 @@
   },
   {
     "id": 412,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Obat herbal sering dianggap lebih aman daripada obat kimia. Padahal, 'alami' tidak selalu berarti 'aman'. Tanaman tertentu mengandung racun atau dapat berinteraksi negatif dengan obat dokter.'\n\nManakah pernyataan yang SAMA maknanya dengan kalimat 'alami tidak selalu berarti aman'?",
     "options": {
@@ -1529,7 +1529,7 @@
   },
   {
     "id": 413,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Film horor modern tidak lagi mengandalkan *jump scare* murahan, tetapi membangun ketakutan psikologis melalui atmosfer dan cerita yang mengganggu.'\n\nKata 'murahan' dalam teks tersebut berkonotasi...",
     "options": {
@@ -1544,7 +1544,7 @@
   },
   {
     "id": 414,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Kebijakan ganjil-genap efektif mengurangi kemacetan di jalan protokol. Namun, kebijakan ini justru memicu peningkatan pembelian mobil kedua dengan plat nomor berbeda oleh kalangan mampu.'\n\nIde pokok paragraf di atas adalah...",
     "options": {
@@ -1559,7 +1559,7 @@
   },
   {
     "id": 415,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Literasi digital bukan sekadar kemampuan mengoperasikan gawai, melainkan kemampuan berpikir kritis dalam menyaring informasi dan memahami jejak digital.'\n\nDefinisi literasi digital menurut teks di atas menekankan pada aspek...",
     "options": {
@@ -1574,7 +1574,7 @@
   },
   {
     "id": 416,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Air susu dibalas air tuba.'\nPeribahasa yang memiliki makna BERLAWANAN dengan peribahasa di atas adalah...",
     "options": {
@@ -1589,7 +1589,7 @@
   },
   {
     "id": 417,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Pembangunan infrastruktur masif di pulau itu bagaikan pedang bermata dua. Di satu sisi membuka isolasi ekonomi, di sisi lain mengancam habitat satwa endemik.'\n\nSikap penulis terhadap pembangunan infrastruktur adalah...",
     "options": {
@@ -1604,7 +1604,7 @@
   },
   {
     "id": 418,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Buku cetak diperkirakan akan punah, digantikan e-book. Faktanya, penjualan buku cetak kembali naik karena pembaca merindukan pengalaman sensori membalik halaman dan bau kertas yang khas.'\n\nMengapa prediksi kepunahan buku cetak meleset?",
     "options": {
@@ -1619,7 +1619,7 @@
   },
   {
     "id": 419,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Janganlah menilai ikan dari kemampuannya memanjat pohon.'\nKutipan tersebut mengkritik sistem pendidikan yang...",
     "options": {
@@ -1634,7 +1634,7 @@
   },
   {
     "id": 420,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Inflasi medis diproyeksikan mencapai 14% tahun depan, jauh di atas inflasi ekonomi umum. Hal ini akan memukul daya beli masyarakat terhadap layanan kesehatan.'\n\nSolusi paling logis untuk masalah di atas bagi individu adalah...",
     "options": {
@@ -1649,7 +1649,7 @@
   },
   {
     "id": 421,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Praktik *greenwashing* dilakukan perusahaan dengan melabeli produk mereka 'ramah lingkungan' hanya karena kemasannya dari kertas daur ulang, padahal proses produksi utamanya menghasilkan limbah B3 yang mencemari sungai.'\n\nApa inti dari kritik dalam teks di atas?",
     "options": {
@@ -1664,7 +1664,7 @@
   },
   {
     "id": 422,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Validitas data survei sering dipertanyakan jika sampel tidak representatif. *Selection bias* terjadi ketika metode pemilihan sampel secara tidak sengaja menguntungkan kelompok tertentu, sehingga hasil survei menjadi condong ke satu arah.'\n\nApa dampak utama dari *selection bias*?",
     "options": {
@@ -1679,7 +1679,7 @@
   },
   {
     "id": 423,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Mata uang kripto sering dianggap sebagai emas digital karena jumlahnya terbatas. Namun, volatilitas harganya yang ekstrem membuatnya gagal memenuhi fungsi dasar uang sebagai penyimpan nilai (*store of value*) yang stabil.'\n\nArgumen utama teks tersebut menolak anggapan bahwa...",
     "options": {
@@ -1694,7 +1694,7 @@
   },
   {
     "id": 424,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Ia menatap nanar pada puing-puing rumahnya. Di sana, di balik reruntuhan tembok itu, tersimpan tawa masa kecil dan hangat pelukan ibu yang tak akan pernah kembali. Bencana ini tidak hanya merenggut atap, tapi juga merenggut jiwanya.'\n\nKata 'atap' dalam teks tersebut merupakan metonimia yang mewakili...",
     "options": {
@@ -1709,7 +1709,7 @@
   },
   {
     "id": 425,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Pemerintah menerapkan pajak karbon untuk industri. Industri merespons dengan menaikkan harga produk. Akhirnya, beban pajak tersebut secara tidak langsung ditanggung oleh konsumen.'\n\nFenomena ekonomi yang dijelaskan teks di atas adalah...",
     "options": {
@@ -1724,7 +1724,7 @@
   },
   {
     "id": 426,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Media sosial sering memperlihatkan *highlight reel* kehidupan orang lain yang tampak sempurna. Membandingkan *behind the scene* kehidupan kita yang berantakan dengan panggung orang lain yang tertata adalah resep pasti untuk ketidakbahagiaan.'\n\nPesan moral dari teks tersebut adalah...",
     "options": {
@@ -1739,7 +1739,7 @@
   },
   {
     "id": 427,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Ketergantungan pada gandum impor membuat ketahanan pangan kita rapuh. Diversifikasi pangan berbasis sumber daya lokal seperti sagu dan singkong bukan lagi pilihan, melainkan keharusan strategis.'\n\nKata 'strategis' dalam kalimat terakhir bermakna...",
     "options": {
@@ -1754,7 +1754,7 @@
   },
   {
     "id": 428,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Banyak pemimpin yang terjebak dalam *Confirmation Bias*. Mereka hanya mengumpulkan data yang mendukung keputusan yang sudah mereka buat sebelumnya, dan mengabaikan data yang berlawanan.'\n\nAkibat fatal dari sikap pemimpin seperti ini adalah...",
     "options": {
@@ -1769,7 +1769,7 @@
   },
   {
     "id": 429,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Hujan emas di negeri orang, hujan batu di negeri sendiri, masih lebih baik di negeri sendiri.'\nKritik terhadap peribahasa ini dalam konteks globalisasi dan mobilitas talenta (brain drain) adalah...",
     "options": {
@@ -1784,7 +1784,7 @@
   },
   {
     "id": 430,
-    "category": "LB-INDO",
+    "category": "Literasi Bahasa Indonesia",
     "category_name": "Literasi Bhs Indonesia",
     "question": "Teks: 'Stoisisme mengajarkan bahwa kita tidak bisa mengendalikan apa yang terjadi pada kita, tetapi kita bisa mengendalikan bagaimana kita meresponsnya. Kebahagiaan terletak pada persepsi, bukan pada peristiwa.'\n\nContoh penerapan stoisisme yang tepat adalah...",
     "options": {
@@ -1799,7 +1799,7 @@
   },
   {
     "id": 421,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'While the internet has democratized information, it has also birthed the phenomenon of \"filter bubbles,\" where algorithms isolate users in their own cultural or ideological ghettos. Consequently, the very tool designed to broaden horizons often narrows them.'\n\nWhat is the author's main argument regarding the internet?",
     "options": {
@@ -1814,7 +1814,7 @@
   },
   {
     "id": 422,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'The company’s decision to pivot to renewable energy was not merely an act of corporate social responsibility. In a market increasingly hostile to carbon-heavy industries, it was a calculated survival strategy.'\n\nThe text suggests that the company's motivation was primarily...",
     "options": {
@@ -1829,7 +1829,7 @@
   },
   {
     "id": 423,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Critics argue that the new urban planning policy gentrifies neighborhoods, displacing long-term residents. Proponents, however, point to the revitalization of decaying infrastructure and the influx of new businesses as undeniable benefits.'\n\nWhat is the relationship between the two sentences?",
     "options": {
@@ -1844,7 +1844,7 @@
   },
   {
     "id": 424,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Despite his menacing appearance, the old dog was as docile as a lamb, often allowing the neighborhood cats to steal food from his bowl without so much as a growl.'\n\nThe phrase 'docile as a lamb' implies that the dog is...",
     "options": {
@@ -1859,7 +1859,7 @@
   },
   {
     "id": 425,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Nostalgia is a seductive liar. It filters out the rough edges of the past, leaving only a polished, idealized version that never truly existed.'\n\nThe author's tone towards nostalgia can be described as...",
     "options": {
@@ -1874,7 +1874,7 @@
   },
   {
     "id": 426,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'The study found that while remote work increased employee satisfaction, it led to a decline in cross-departmental collaboration, suggesting that spontaneous water-cooler conversations are more vital to innovation than previously thought.'\n\nWhich conclusion is best supported by the text?",
     "options": {
@@ -1889,7 +1889,7 @@
   },
   {
     "id": 427,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'To say that the movie was a disappointment would be an understatement. It was a chaotic mess of plot holes and wooden acting that made the two-hour runtime feel like a life sentence.'\n\nWhat does the author mean by 'would be an understatement'?",
     "options": {
@@ -1904,7 +1904,7 @@
   },
   {
     "id": 428,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Renewable energy subsidies are often criticized for distorting the market. However, without them, fossil fuels—which have historically benefited from massive government support—would maintain an unfair competitive advantage.'\n\nThe author mentions fossil fuels primarily to...",
     "options": {
@@ -1919,7 +1919,7 @@
   },
   {
     "id": 429,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Jonas checked his watch for the third time in a minute. He tapped his foot rhythmically against the floor and wiped his sweaty palms on his jeans.'\n\nIt can be inferred that Jonas is feeling...",
     "options": {
@@ -1934,7 +1934,7 @@
   },
   {
     "id": 430,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'The rise of automation in manufacturing has been a double-edged sword: it has boosted production efficiency significantly but has also rendered many manual skill sets obsolete.'\n\nThe idiom 'double-edged sword' suggests that automation...",
     "options": {
@@ -1949,7 +1949,7 @@
   },
   {
     "id": 431,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'History is written by the victors. This aphorism warns us that historical narratives are rarely objective records; rather, they are curated interpretations that often silence the voices of the defeated.'\n\nWhich of the following creates a similar warning?",
     "options": {
@@ -1964,7 +1964,7 @@
   },
   {
     "id": 432,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'While the protagonist’s actions were legally questionable, the narrative frames them as morally necessary, forcing the audience to grapple with the dissonance between law and justice.'\n\nThe passage implies that...",
     "options": {
@@ -1979,7 +1979,7 @@
   },
   {
     "id": 433,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'The scientist’s hypothesis was met with skepticism, not because it lacked data, but because it challenged the prevailing dogma of the scientific community.'\n\nThe skepticism mentioned stems from...",
     "options": {
@@ -1994,7 +1994,7 @@
   },
   {
     "id": 434,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Urban vertical farming offers a glimmer of hope for food security. By reducing transportation distances and water usage, it addresses two critical inefficiencies of traditional agriculture.'\n\nThe word 'addresses' in this context is closest in meaning to...",
     "options": {
@@ -2009,7 +2009,7 @@
   },
   {
     "id": 435,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Consumerism thrives on planned obsolescence, a strategy where products are designed to fail after a certain period, compelling customers to purchase replacements prematurely.'\n\nThe author is critical of consumerism because...",
     "options": {
@@ -2024,7 +2024,7 @@
   },
   {
     "id": 436,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Ideally, meritocracy rewards talent and effort. In reality, however, systemic inequalities often mean that the starting line is not the same for everyone, rendering the race unfair from the outset.'\n\nWhat is the main idea of the passage?",
     "options": {
@@ -2039,7 +2039,7 @@
   },
   {
     "id": 437,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'E-books were predicted to kill print. Yet, print sales have stabilized. It seems that the tactile experience of turning a page and the smell of paper satisfy a sensory hunger that screens cannot feed.'\n\nThe text suggests that the survival of print books is due to...",
     "options": {
@@ -2054,7 +2054,7 @@
   },
   {
     "id": 438,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'Silence is not always empty; sometimes it is heavy with things unsaid, creating a tension far more suffocating than any scream.'\n\nWhich of the following situations best illustrates the quote?",
     "options": {
@@ -2069,7 +2069,7 @@
   },
   {
     "id": 439,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'The politician’s speech was a masterpiece of ambiguity; he spoke for an hour, yet promised absolutely nothing concrete.'\n\nThe word 'concrete' in this context means...",
     "options": {
@@ -2084,7 +2084,7 @@
   },
   {
     "id": 440,
-    "category": "LB-ING",
+    "category": "Literasi Bahasa Inggris",
     "category_name": "Literasi Bhs Inggris",
     "question": "Read the text:\n'While mimicry in nature is often a defense mechanism, in the corporate world, it is usually a shortcut to market share—copying a competitor’s innovation to avoid the risks of R&D.'\n\nThe author compares corporate mimicry to nature to highlight that...",
     "options": {
@@ -2099,7 +2099,7 @@
   }
 , {
     "id": 441,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah bak mandi memiliki dua keran pengisi (A dan B) dan satu saluran pembuangan (C). Keran A dapat mengisi bak penuh dalam 4 jam, keran B dalam 6 jam, sedangkan saluran C dapat mengosongkan bak penuh dalam 8 jam. Jika awalnya bak kosong, dan ketiga saluran dibuka bersamaan selama 2 jam, lalu saluran C ditutup, berapa lama lagi waktu yang dibutuhkan untuk mengisi bak hingga penuh?",
     "options": {
@@ -2114,7 +2114,7 @@
   },
   {
     "id": 442,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Toko A memberikan diskon 50% + 20%. Toko B memberikan diskon langsung 65%. Jika harga awal barang sama, toko manakah yang lebih murah dan berapa selisih persentase harga akhirnya?",
     "options": {
@@ -2129,7 +2129,7 @@
   },
   {
     "id": 443,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Seorang pedagang mencampur beras jenis A (Rp10.000/kg) dan beras jenis B (Rp15.000/kg). Ia ingin menjual campuran tersebut seharga Rp14.000/kg dengan keuntungan 20% dari harga beli. Berapakah perbandingan berat beras A dan beras B?",
     "options": {
@@ -2144,7 +2144,7 @@
   },
   {
     "id": 444,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Dalam sebuah kelas, rata-rata nilai siswa laki-laki adalah 78 dan perempuan 85. Jika rata-rata kelas adalah 82, berapakah perbandingan jumlah siswa laki-laki dan perempuan?",
     "options": {
@@ -2159,7 +2159,7 @@
   },
   {
     "id": 445,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah virus membelah diri menjadi 3 setiap 30 menit. Jika pada pukul 10.00 ada 10 virus, berapa banyak virus pada pukul 12.00?",
     "options": {
@@ -2174,7 +2174,7 @@
   },
   {
     "id": 446,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Di suatu parkiran terdapat mobil dan sepeda motor. Jumlah kendaraan 50, jumlah roda total 140. Jika tarif parkir mobil Rp5.000 dan motor Rp2.000, berapa pendapatan total tukang parkir?",
     "options": {
@@ -2189,7 +2189,7 @@
   },
   {
     "id": 447,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Perhatikan pola bilangan: 2, 2, 4, 6, 10, 16, X. Nilai X adalah...",
     "options": {
@@ -2204,7 +2204,7 @@
   },
   {
     "id": 448,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Gaji Andi 20% lebih tinggi dari Budi. Gaji Budi x% lebih rendah dari Andi. Nilai x adalah...",
     "options": {
@@ -2219,7 +2219,7 @@
   },
   {
     "id": 449,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah kolam renang berukuran 10m x 5m dengan kedalaman miring mulai dari 1m hingga 3m. Berapa volume air yang dibutuhkan untuk memenuhi kolam tersebut?",
     "options": {
@@ -2234,7 +2234,7 @@
   },
   {
     "id": 450,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Dari 5 pria dan 4 wanita akan dipilih 3 orang perwakilan. Peluang terpilihnya minimal 2 wanita adalah...",
     "options": {
@@ -2249,7 +2249,7 @@
   },
   {
     "id": 451,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Harga 1 kg daging sapi sama dengan harga 2 kg daging ayam. Harga 3 kg daging ayam sama dengan harga 4 kg ikan. Jika Ibu membeli 1 kg sapi, 2 kg ayam, dan 2 kg ikan seharga Rp260.000, berapa harga 1 kg daging sapi?",
     "options": {
@@ -2264,7 +2264,7 @@
   },
   {
     "id": 452,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah mobil menempuh jarak kota A ke B dengan kecepatan 60 km/jam dan kembali dari B ke A dengan kecepatan 40 km/jam. Berapakah kecepatan rata-rata mobil tersebut untuk seluruh perjalanan?",
     "options": {
@@ -2279,7 +2279,7 @@
   },
   {
     "id": 453,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Tiga tahun yang lalu, usia Ayah adalah 5 kali usia Budi. Tujuh tahun yang akan datang, usia Ayah menjadi 2,5 kali usia Budi. Berapa usia Ayah sekarang?",
     "options": {
@@ -2294,7 +2294,7 @@
   },
   {
     "id": 454,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah produsen makanan menjual produknya dengan modal Rp10.000/unit. Jika ia jual Rp12.000, laku 100 unit. Setiap kenaikan harga Rp1.000, penjualan turun 10 unit. Pada harga jual berapa keuntungan maksimum diperoleh?",
     "options": {
@@ -2309,7 +2309,7 @@
   },
   {
     "id": 455,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Diketahui data: 4, 6, x, 8, 10. Jika rata-rata data tersebut sama dengan mediannya, berapakah nilai x yang mungkin? (x bilangan bulat)",
     "options": {
@@ -2324,7 +2324,7 @@
   },
   {
     "id": 456,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Pekerjaan A selesai dalam 3 hari, B dalam 4 hari, C dalam 6 hari. Jika mereka bekerja bersama-sama, berapa hari pekerjaan selesai?",
     "options": {
@@ -2339,7 +2339,7 @@
   },
   {
     "id": 457,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah tali dipotong menjadi 5 bagian membentuk barisan geometri. Jika potongan terpendek 4 cm dan terpanjang 324 cm, panjang tali mula-mula adalah...",
     "options": {
@@ -2354,7 +2354,7 @@
   },
   {
     "id": 458,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Dalam suatu gedung bioskop, baris pertama memiliki 20 kursi, baris kedua 24 kursi, dan seterusnya bertambah 4 kursi. Jika ada 15 baris, berapa total kapasitas bioskop?",
     "options": {
@@ -2369,7 +2369,7 @@
   },
   {
     "id": 459,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Jika f(x) = 2x - 3 dan (g o f)(x) = 4x^2 - 12x + 10, maka g(1) = ...",
     "options": {
@@ -2384,7 +2384,7 @@
   },
   {
     "id": 460,
-    "category": "PM",
+    "category": "Penalaran Matematika",
     "category_name": "Penalaran Matematika",
     "question": "Sebuah dadu dimodifikasi sehingga peluang muncul angka genap dua kali peluang muncul angka ganjil. Peluang muncul angka 5 adalah...",
     "options": {
@@ -2400,7 +2400,7 @@
 ,
   {
     "id": 501,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Data penjualan smartphone merek X menunjukkan kenaikan drastis setiap kali mereka merilis model dengan baterai di atas 5000mAh. Tahun ini, merek X merilis model baru dengan baterai 6000mAh tetapi dengan prosesor yang lebih lambat. Manakah prediksi yang PALING MUNGKIN terjadi berdasarkan pola data masa lalu?",
     "options": {
@@ -2415,7 +2415,7 @@
   },
   {
     "id": 502,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Di Desa A, setiap kali panen raya durian tiba, jumlah wisatawan meningkat dua kali lipat. Bulan depan diperkirakan akan terjadi panen raya durian di Desa A. Simpulan yang paling didukung oleh fakta tersebut adalah...",
     "options": {
@@ -2430,7 +2430,7 @@
   },
   {
     "id": 503,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Perhatikan pola bilangan berikut: 3, 6, 10, 15, 21, ... Angka selanjutnya dalam deret tersebut merepresentasikan jumlah kursi yang dibutuhkan di baris berikutnya. Berapa kursi yang dibutuhkan?",
     "options": {
@@ -2445,7 +2445,7 @@
   },
   {
     "id": 504,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Lampu : Gelap = Makanan : ... \nManakah kata yang paling tepat untuk melengkapi analogi tersebut?",
     "options": {
@@ -2460,7 +2460,7 @@
   },
   {
     "id": 505,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Sebuah penelitian menemukan bahwa 85% mahasiswa yang aktif di organisasi kemahasiswaan memiliki IPK di atas 3.50. Budi adalah mahasiswa baru yang sangat ingin memiliki IPK tinggi. Berdasarkan data tersebut, saran terbaik untuk Budi adalah...",
     "options": {
@@ -2475,7 +2475,7 @@
   },
   {
     "id": 506,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Jika hujan deras turun di hulu sungai lebih dari 3 jam, biasanya Jakarta banjir. Hari ini Jakarta banjir. Simpulan yang PALING TIDAK VALID adalah...",
     "options": {
@@ -2490,7 +2490,7 @@
   },
   {
     "id": 507,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Kertas : Kayu = ... : ...",
     "options": {
@@ -2505,7 +2505,7 @@
   },
   {
     "id": 508,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Data: Toko A memberikan diskon besar, pengunjung ramai. Toko B mendatangkan artis terkenal, pengunjung ramai. Toko C membagikan voucher gratis, pengunjung ramai. Simpulan induktif mengenai penyebab keramaian toko adalah...",
     "options": {
@@ -2520,7 +2520,7 @@
   },
   {
     "id": 509,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Pola huruf: A, C, F, J, O, ... Huruf selanjutnya adalah...",
     "options": {
@@ -2535,7 +2535,7 @@
   },
   {
     "id": 510,
-    "category": "PU-IND",
+    "category": "Penalaran Induktif",
     "category_name": "Penalaran Induktif",
     "question": "Semua mamalia yang hidup di laut bernapas dengan paru-paru. Ikan paus adalah hewan yang hidup di laut dan menyusui anaknya. Berdasarkan fakta biologis bahwa hewan menyusui adalah mamalia, manakah simpulan yang paling tepat?",
     "options": {
@@ -2550,7 +2550,7 @@
   },
   {
     "id": 511,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Premis 1: Semua atlet profesional menjaga pola makan.\nPremis 2: Sebagian orang yang menjaga pola makan tidak suka makanan manis.\n\nSimpulan yang PALING TEPAT adalah...",
     "options": {
@@ -2565,7 +2565,7 @@
   },
   {
     "id": 512,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Jika harga BBM naik, maka tarif angkutan umum naik atau daya beli masyarakat turun. Ternyata, daya beli masyarakat tidak turun.\n\nSimpulan yang sah adalah...",
     "options": {
@@ -2580,7 +2580,7 @@
   },
   {
     "id": 513,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Pernyataan: 'Semua peserta ujian yang membawa kartu identitas dan datang tepat waktu diperbolehkan masuk ruangan.'\nNegasi (ingkaran) dari pernyataan tersebut adalah...",
     "options": {
@@ -2595,7 +2595,7 @@
   },
   {
     "id": 514,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Premis 1: Jika Budi lulus UTBK, maka ia akan kuliah di PTN atau bekerja di BUMN.\nPremis 2: Budi tidak kuliah di PTN dan tidak bekerja di BUMN.\n\nSimpulan yang valid adalah...",
     "options": {
@@ -2610,7 +2610,7 @@
   },
   {
     "id": 515,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Hanya jika cuaca cerah, pesawat dapat mendarat. Hari ini pesawat dapat mendarat. Simpulan...",
     "options": {
@@ -2625,7 +2625,7 @@
   },
   {
     "id": 516,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Tidak ada dosen yang buta huruf. Sebagian penulis adalah dosen. Simpulan...",
     "options": {
@@ -2640,7 +2640,7 @@
   },
   {
     "id": 517,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Diketahui: A > B, C < B, dan D > A. Urutan dari yang paling kecil adalah...",
     "options": {
@@ -2655,7 +2655,7 @@
   },
   {
     "id": 518,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Jika X adalah bilangan genap, maka X habis dibagi 2. X tidak habis dibagi 2. Maka...",
     "options": {
@@ -2670,7 +2670,7 @@
   },
   {
     "id": 519,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Semua anggota organisasi X wajib memakai baju merah. Andi memakai baju merah. Kesimpulan...",
     "options": {
@@ -2685,7 +2685,7 @@
   },
   {
     "id": 520,
-    "category": "PU-DED",
+    "category": "Penalaran Deduktif",
     "category_name": "Penalaran Deduktif",
     "question": "Tidak ada ikan yang bisa terbang. Beberapa hewan yang bisa terbang memiliki bulu. Simpulan...",
     "options": {
