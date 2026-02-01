@@ -9,10 +9,10 @@ app.use(cors());
 app.use(express.json());
 
 // INI KUNCINYA: Memberitahu Express untuk melayani file statis dari folder 'public'
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(process.cwd(), 'public')));
 
 // Load Database Soal
-const questionsPath = path.join(__dirname, 'data', 'questions.json');
+const questionsPath = path.join(process.cwd(), 'data', 'questions.json');
 let questionsData = [];
 
 try {
@@ -177,14 +177,18 @@ app.post('/api/submit', (req, res) => {
 
 // PENTING: Jika bukan memanggil API, maka kirimkan index.html agar website muncul
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
 });
 
 // ==========================================
 // 4. JALANKAN SERVER
 // ==========================================
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`🚀 Server siap di port ${PORT}`);
-    console.log(`🔗 Coba buka di browser: http://localhost:${PORT}/api/questions`);
-});
+if (process.env.NODE_ENV === 'development') {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => {
+        console.log(`🚀 Server siap di port ${PORT}`);
+        console.log(`🔗 Coba buka di browser: http://localhost:${PORT}/api/questions`);
+    });
+}
+
+module.exports = app;
