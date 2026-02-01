@@ -19,21 +19,36 @@ function getQuestions() {
     } catch (e) { return []; }
 }
 
-// 2. API ROUTES (Untuk Soal & Login)
+// 2. API ROUTES
 app.get('/api/questions', (req, res) => {
     const { mode, category } = req.query;
     let result = getQuestions();
     
     if (mode === 'practice' && category) {
+        // --- LOGIKA PENCARIAN PINTAR (KEYWORD MATCHING) ---
+        // Masalah: Database cuma punya "Penalaran Umum", tapi User minta "Penalaran Induktif"
+        // Solusi: Kita ambil kata depannya saja. Contoh: "Penalaran"
+        
+        const mainKeyword = category.split(' ')[0]; // Ambil kata pertama (misal: "Penalaran", "Literasi", "Pengetahuan")
+
         const filtered = result.filter(q => 
-            q.category && q.category.toLowerCase().includes(category.toLowerCase())
+            q.category && q.category.includes(mainKeyword)
         );
-        // Anti-Macet: Ambil acak jika kategori kosong
-        if (filtered.length > 0) result = filtered.slice(0, 20);
-        else result = result.sort(() => 0.5 - Math.random()).slice(0, 20);
+
+        // Jika ketemu soal yang cocok kata depannya, tampilkan.
+        if (filtered.length > 0) {
+            // Acak urutannya supaya gak bosan, ambil 20
+            result = filtered.sort(() => 0.5 - Math.random()).slice(0, 20);
+        } else {
+            // FALLBACK: Kalau beneran gak ada, ambil soal acak apapun (daripada error)
+            console.log(`Soal kategori ${category} kosong. Mengambil acak.`);
+            result = result.sort(() => 0.5 - Math.random()).slice(0, 20);
+        }
+
     } else if (mode === 'full') {
         result = result.slice(0, 180);
     }
+    
     res.json(result);
 });
 
@@ -41,14 +56,13 @@ app.post('/api/auth/login', (req, res) => {
     res.json({ message: "Login OK", user: { name: "Peserta", email: req.body.email } });
 });
 
-// 3. ROUTE HALAMAN DEPAN (FIX CANNOT GET /)
-// Ini yang bikin website kamu muncul!
+// 3. ROUTE UTAMA (Agar Web Muncul)
 app.get('/', (req, res) => {
     const htmlPath = path.join(process.cwd(), 'index.html');
     if (fs.existsSync(htmlPath)) {
         res.sendFile(htmlPath);
     } else {
-        res.status(404).send("Error: File index.html tidak ditemukan di root project!");
+        res.status(404).send("File index.html tidak ditemukan.");
     }
 });
 
