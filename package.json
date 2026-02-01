@@ -1,13 +1,16 @@
 {
   "name": "ptneduboost",
   "version": "1.0.0",
-  "description": "Backend Server UTBK",
-  "main": "server.js",
+  "description": "Backend serverless for UTBK app",
+  "main": "api/index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node api/index.js"
   },
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.18.2"
+  },
+  "engines": {
+    "node": "18.x"
   }
 }
