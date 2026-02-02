@@ -107,6 +107,23 @@ app.post('/api/auth/login', (req, res) => {
     res.json({ message: "Login OK", user: { name: "Peserta", email: req.body.email } });
 });
 
+// API Prodi & Passing Grade
+app.get('/api/prodi', (req, res) => {
+    try {
+        const prodiPath = path.join(process.cwd(), 'data', 'prodi.json');
+        if (fs.existsSync(prodiPath)) {
+            const data = fs.readFileSync(prodiPath, 'utf8');
+            const prodi = JSON.parse(data);
+            res.json(prodi);
+        } else {
+            res.json([]);
+        }
+    } catch (error) {
+        console.error("Error loading prodi data:", error);
+        res.json([]);
+    }
+});
+
 // Route Halaman Depan
 app.get('/', (req, res) => {
     const htmlPath = path.join(process.cwd(), 'index.html');

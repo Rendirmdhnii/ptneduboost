@@ -80,6 +80,29 @@
     <div id="landing-page" class="hidden">
         <div style="width:100%; max-width:600px;">
             <div class="mode-card">
+                <h3>Pilihan Program Studi</h3>
+                <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Pilih jurusan untuk melihat target passing grade</p>
+                <select id="pilihan-1" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
+                    <option value="">-- Pilih Program Studi --</option>
+                </select>
+                <div id="info-jurusan" class="hidden" style="background:#f8f9fa; padding:15px; border-radius:8px; margin-bottom:20px; border-left:4px solid var(--primary);">
+                    <div style="display:flex; gap:15px; margin-bottom:10px;">
+                        <img id="logo-prodi" src="" alt="Logo" style="width:60px; height:60px; border-radius:4px; object-fit:contain;">
+                        <div style="flex:1;">
+                            <div style="font-weight:bold; color:var(--primary); margin-bottom:5px;" id="nama-prodi"></div>
+                            <div style="font-size:0.9rem; color:#666;" id="univ-prodi"></div>
+                        </div>
+                    </div>
+                    <div style="border-top:1px solid #ddd; padding-top:10px;">
+                        <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px; font-size:0.9rem;">
+                            <div><span style="color:#666;">📊 Passing Grade:</span> <b id="pg-prodi" style="color:var(--primary);">-</b></div>
+                            <div><span style="color:#666;">⚖️ Keketatan:</span> <b id="ratio-prodi" style="color:var(--primary);">-</b></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mode-card">
                 <h3>A. Latihan Per Subtes</h3>
                 <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Waktu & Jumlah Soal disesuaikan standar UTBK</p>
                 <select id="mapel" style="width:100%; padding:12px; margin-bottom:15px; border-radius:6px; border:1px solid #ccc;">
@@ -159,6 +182,8 @@
         
         let questions = [], answers = [], marked = [], idx = 0, timerVal;
         let examStartTime = 0; // Untuk timer anti-reset
+        let prodiData = []; // Database prodi dari server
+        let selectedProdiId = null; // ID prodi yang dipilih
 
         // --- AUTH SYSTEM ---
         function switchMode(m) {
@@ -179,13 +204,65 @@
             document.getElementById('landing-page').classList.remove('hidden');
             document.getElementById('u-name').innerText = u.name;
             
+            // Load data prodi saat dashboard ditampilkan
+            loadProdi();
+            
             // Cek apakah ada progress tersimpan
             setTimeout(loadProgress, 500); 
         }
         function logout() { localStorage.clear(); location.reload(); }
         if(localStorage.getItem('user')) showDash(JSON.parse(localStorage.getItem('user')));
 
-        // --- CORE EXAM FUNCTIONS ---
+        // --- FITUR PRODI & PASSING GRADE ---
+        async function loadProdi() {
+            try {
+                const res = await fetch('/api/prodi');
+                prodiData = await res.json();
+                
+                // Populate select dropdown
+                const selectEl = document.getElementById('pilihan-1');
+                selectEl.innerHTML = '<option value="">-- Pilih Program Studi --</option>';
+                
+                prodiData.forEach(p => {
+                    const kelompok = p.kelompok || 'Unknown';
+                    const option = document.createElement('option');
+                    option.value = p.id;
+                    option.textContent = `[${kelompok}] ${p.univ} - ${p.prodi}`;
+                    selectEl.appendChild(option);
+                });
+                
+                // Event listener untuk tampilkan info prodi
+                selectEl.addEventListener('change', function() {
+                    if (this.value) {
+                        const selected = prodiData.find(p => p.id === this.value);
+                        if (selected) {
+                            showProdiInfo(selected);
+                            selectedProdiId = this.value;
+                        }
+                    } else {
+                        document.getElementById('info-jurusan').classList.add('hidden');
+                    }
+                });
+            } catch (e) {
+                console.error("Error loading prodi data:", e);
+            }
+        }
+
+        function showProdiInfo(prodi) {
+            const infoDiv = document.getElementById('info-jurusan');
+            
+            // Hitung rasio keketatan
+            const ratio = Math.round(prodi.peminat / prodi.daya_tampung);
+            
+            // Update info
+            document.getElementById('logo-prodi').src = prodi.logo;
+            document.getElementById('nama-prodi').textContent = `${prodi.prodi} (${prodi.kelompok})`;
+            document.getElementById('univ-prodi').textContent = prodi.univ;
+            document.getElementById('pg-prodi').textContent = prodi.passing_grade;
+            document.getElementById('ratio-prodi').textContent = `1 : ${ratio} peminat`;
+            
+            infoDiv.classList.remove('hidden');
+        }
         async function startExam(mode) {
             // Bersihkan data lama dulu biar fresh
             localStorage.removeItem(STORAGE_KEY);
@@ -387,10 +464,35 @@
                 `;
             });
 
+            // Hitung skor akhir (persentase × 1000)
+            const finalScore = Math.round((correctCount/questions.length)*1000);
+            
+            // Ambil passing grade dari prodi yang dipilih (jika ada)
+            let passingGrade = null;
+            let passingStatus = '';
+            if (selectedProdiId) {
+                const selected = prodiData.find(p => p.id === selectedProdiId);
+                if (selected) {
+                    passingGrade = selected.passing_grade;
+                    passingStatus = finalScore >= passingGrade 
+                        ? `<div style="color:var(--green); font-size:1.2rem; font-weight:bold; margin-top:15px; padding:15px; background:#f0f8f4; border-radius:8px;">✅ LOLOS! Skor Anda ${finalScore} ≥ Passing Grade ${passingGrade}</div>`
+                        : `<div style="color:var(--red); font-size:1.2rem; font-weight:bold; margin-top:15px; padding:15px; background:#fff5f5; border-radius:8px;">❌ TIDAK LOLOS. Skor Anda ${finalScore} < Passing Grade ${passingGrade}. Kurang ${passingGrade - finalScore} poin.</div>`;
+                }
+            }
+
             document.getElementById('exam-container').classList.add('hidden');
             document.getElementById('result-page').classList.remove('hidden');
-            document.getElementById('final-score').innerText = Math.round((correctCount/questions.length)*1000);
-            document.getElementById('final-msg').innerText = `Benar ${correctCount} dari ${questions.length} soal.`;
+            document.getElementById('final-score').innerText = finalScore;
+            
+            let finalMsg = `Benar ${correctCount} dari ${questions.length} soal.`;
+            if (selectedProdiId) {
+                const selected = prodiData.find(p => p.id === selectedProdiId);
+                if (selected) {
+                    finalMsg += `<br><small style="color:#666;">Program Studi: ${selected.univ} - ${selected.prodi}</small>`;
+                }
+            }
+            document.getElementById('final-msg').innerHTML = finalMsg + (passingStatus || '');
+            
             document.getElementById('review-list').innerHTML = reviewHTML;
             window.scrollTo(0,0);
         }

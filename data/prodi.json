@@ -1,0 +1,52 @@
+[
+  {
+    "id": "ui-ik",
+    "univ": "Universitas Indonesia",
+    "prodi": "Ilmu Komputer",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Makara_UI.png/220px-Makara_UI.png",
+    "passing_grade": 750,
+    "daya_tampung": 60,
+    "peminat": 1250,
+    "kelompok": "Saintek"
+  },
+  {
+    "id": "ui-hukum",
+    "univ": "Universitas Indonesia",
+    "prodi": "Ilmu Hukum",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Makara_UI.png/220px-Makara_UI.png",
+    "passing_grade": 710,
+    "daya_tampung": 90,
+    "peminat": 1500,
+    "kelompok": "Soshum"
+  },
+  {
+    "id": "itb-stei",
+    "univ": "Institut Teknologi Bandung",
+    "prodi": "STEI - Komputasi",
+    "logo": "https://upload.wikimedia.org/wikipedia/id/thumb/9/95/Logo_Institut_Teknologi_Bandung.svg/220px-Logo_Institut_Teknologi_Bandung.svg.png",
+    "passing_grade": 735,
+    "daya_tampung": 150,
+    "peminat": 2100,
+    "kelompok": "Saintek"
+  },
+  {
+    "id": "ugm-kedokteran",
+    "univ": "Universitas Gadjah Mada",
+    "prodi": "Kedokteran",
+    "logo": "https://upload.wikimedia.org/wikipedia/id/thumb/d/d3/Lambang_UGM.png/220px-Lambang_UGM.png",
+    "passing_grade": 745,
+    "daya_tampung": 85,
+    "peminat": 3500,
+    "kelompok": "Saintek"
+  },
+  {
+    "id": "ub-tif",
+    "univ": "Universitas Brawijaya",
+    "prodi": "Teknik Informatika",
+    "logo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Logo_Universitas_Brawijaya.svg/220px-Logo_Universitas_Brawijaya.svg.png",
+    "passing_grade": 680,
+    "daya_tampung": 120,
+    "peminat": 1800,
+    "kelompok": "Saintek"
+  }
+]
