@@ -36,6 +36,7 @@
         .nav-grid { display:grid; grid-template-columns:repeat(5, 1fr); gap:8px; margin-top:10px; }
         .nav-item { padding:10px; background:#fff; border:1px solid #ccc; text-align:center; cursor:pointer; border-radius:4px; font-weight:bold; }
         .nav-item.active { background:var(--primary); color:white; }
+        .nav-item.marked { background:#ffc107; color:black; border-color:#e0a800; font-weight:bold; }
 
         /* REVIEW STYLE (PEMBAHASAN) */
         .review-item { background:white; padding:20px; border-radius:10px; margin-bottom:15px; border-left:5px solid #ccc; text-align:left; box-shadow:0 2px 5px rgba(0,0,0,0.05); }
@@ -117,6 +118,7 @@
         <div id="question-box" class="question-area">Loading...</div>
         <div style="display:flex; justify-content:space-between; margin-bottom:20px;">
             <button onclick="navQ(-1)" style="padding:10px 20px;">❮ Sblm</button>
+            <button onclick="toggleMark()" style="padding:10px 20px; background:#ffc107; color:black; border:none; border-radius:6px; font-weight:bold; cursor:pointer;">📌 Ragu-Ragu</button>
             <button onclick="navQ(1)" style="padding:10px 20px;">Lanjut ❯</button>
         </div>
         <div style="background:white; padding:15px; border-radius:8px;">
@@ -155,7 +157,7 @@
             "Penalaran Matematika": { limit: 20, time: 42.5 * 60 }
         };
         
-        let questions = [], answers = [], idx = 0, timerVal;
+        let questions = [], answers = [], marked = [], idx = 0, timerVal;
         let examStartTime = 0; // Untuk timer anti-reset
 
         // --- AUTH SYSTEM ---
@@ -208,7 +210,8 @@
                 const res = await fetch(url);
                 const data = await res.json();
                 questions = (data && data.length > 0) ? data : [{question:"Data kosong.", options:{A:"-"}, correct:"A"}];
-                answers = new Array(questions.length).fill(null); 
+                answers = new Array(questions.length).fill(null);
+                marked = new Array(questions.length).fill(false);
                 idx = 0;
                 examStartTime = Date.now(); // Catat waktu mulai
 
@@ -242,10 +245,16 @@
             renderNav();
         }
 
-        function pilih(opt) { 
-            answers[idx] = opt; 
-            renderQ(); 
+        function pilih(opt) {
+            answers[idx] = opt;
+            renderQ();
             saveProgress(); // AUTO-SAVE SETIAP PILIH JAWABAN
+        }
+
+        function toggleMark() {
+            marked[idx] = !marked[idx];
+            renderNav();
+            saveProgress(); // AUTO-SAVE STATUS MARK
         }
         
         function navQ(d) { 
@@ -260,7 +269,8 @@
             const g = document.getElementById('nav-grid'); g.innerHTML = '';
             questions.forEach((_, i) => {
                 const d = document.createElement('div');
-                d.className = `nav-item ${idx===i?'active':''} ${answers[i]?'answered':''}`;
+                const classes = [`nav-item`, idx===i?'active':'', answers[i]?'answered':'', marked[i]?'marked':''].filter(c=>c);
+                d.className = classes.join(' ');
                 d.innerText = i+1;
                 d.onclick = () => { idx=i; renderQ(); saveProgress(); };
                 g.appendChild(d);
@@ -307,6 +317,7 @@
             const data = {
                 questions: questions,
                 answers: answers,
+                marked: marked,
                 idx: idx,
                 title: document.getElementById('exam-title').innerText,
                 // Simpan endTime agar timer akurat
@@ -338,6 +349,7 @@
                 if (confirm(`⚠️ Terdeteksi sesi ujian "${d.title}" yang belum selesai.\n\nKlik OK untuk MELANJUTKAN.\nKlik Cancel untuk MULAI BARU.`)) {
                     questions = d.questions;
                     answers = d.answers;
+                    marked = d.marked || new Array(questions.length).fill(false);
                     idx = d.idx;
                     setupExamUI(d.title);
                     
