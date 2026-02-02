@@ -104,7 +104,7 @@
             <div class="mode-card" style="border:2px solid var(--primary); background:#f0f7ff;">
                 <h3 style="color:var(--primary);">B. Simulasi Full UTBK</h3>
                 <p style="color:#666; font-size:0.9rem; margin:5px 0 15px;">Semua Subtes | 195 Menit</p>
-                <button id="btn-full" class="btn-primary" onclick="startExam('full')">Mulai Simulasi Full</button>
+                <button id="btn-full" class="btn-primary" onclick="startExam('full')">Mulai Simulasi Full (180 Soal)</button>
             </div>
         </div>
     </div>
@@ -133,7 +133,6 @@
                 <p id="final-msg" style="margin-bottom:20px;"></p>
                 <button class="btn-primary" onclick="location.reload()">Kembali ke Menu</button>
             </div>
-
             <div style="margin-top:30px; text-align:left;">
                 <h3 style="margin-bottom:15px;">Pembahasan & Kunci Jawaban</h3>
                 <div id="review-list"></div>
@@ -142,7 +141,8 @@
     </div>
 
     <script>
-        // CONFIG
+        // CONFIG & STATE
+        const STORAGE_KEY = 'pahamin_progress_v1'; // Kunci untuk Auto-Save
         const examRules = {
             "Penalaran Induktif": { limit: 10, time: 10 * 60 },
             "Penalaran Deduktif": { limit: 10, time: 10 * 60 },
@@ -154,8 +154,11 @@
             "Literasi Bahasa Inggris": { limit: 20, time: 20 * 60 },
             "Penalaran Matematika": { limit: 20, time: 42.5 * 60 }
         };
+        
+        let questions = [], answers = [], idx = 0, timerVal;
+        let examStartTime = 0; // Untuk timer anti-reset
 
-        // AUTH
+        // --- AUTH SYSTEM ---
         function switchMode(m) {
             document.getElementById('form-login').classList.toggle('hidden', m !== 'login');
             document.getElementById('form-register').classList.toggle('hidden', m !== 'register');
@@ -164,11 +167,8 @@
         }
         async function doLogin() {
             const email = document.getElementById('l-email').value;
-            try {
-                await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email}) });
-                localStorage.setItem('user', JSON.stringify({name:"Peserta", email}));
-                showDash({name:"Peserta"});
-            } catch(e) { alert("Login Error"); }
+            localStorage.setItem('user', JSON.stringify({name:"Peserta", email}));
+            showDash({name:"Peserta"});
         }
         function doRegister() { alert("Daftar Sukses!"); switchMode('login'); }
         function showDash(u) {
@@ -176,14 +176,18 @@
             document.getElementById('main-header').classList.remove('hidden');
             document.getElementById('landing-page').classList.remove('hidden');
             document.getElementById('u-name').innerText = u.name;
+            
+            // Cek apakah ada progress tersimpan
+            setTimeout(loadProgress, 500); 
         }
         function logout() { localStorage.clear(); location.reload(); }
         if(localStorage.getItem('user')) showDash(JSON.parse(localStorage.getItem('user')));
 
-        // EXAM VARS
-        let questions = [], answers = [], idx = 0, timerVal;
-
+        // --- CORE EXAM FUNCTIONS ---
         async function startExam(mode) {
+            // Bersihkan data lama dulu biar fresh
+            localStorage.removeItem(STORAGE_KEY);
+            
             const btn = document.getElementById(mode === 'practice' ? 'btn-practice' : 'btn-full');
             const cat = document.getElementById('mapel').value;
             if(btn) btn.innerText = "Menyiapkan Soal...";
@@ -193,7 +197,8 @@
                 limit = examRules[cat].limit;
                 duration = examRules[cat].time;
             } else if (mode === 'full') {
-                limit = 155; duration = 195 * 60;
+                limit = 180; 
+                duration = 195 * 60;
             }
 
             let url = `/api/questions?mode=${mode}&limit=${limit}`;
@@ -202,15 +207,26 @@
             try {
                 const res = await fetch(url);
                 const data = await res.json();
-                questions = (data && data.length > 0) ? data : [{question:"Data kosong/Error load.", options:{A:"-",B:"-"}, correct:"A", explanation:"-"}];
-                answers = new Array(questions.length).fill(null); idx = 0;
-                
-                document.getElementById('landing-page').classList.add('hidden');
-                document.getElementById('exam-container').classList.remove('hidden');
-                document.getElementById('exam-title').innerText = mode === 'full' ? "Simulasi Full" : cat;
-                
-                renderQ(); renderNav(); startTimer(duration);
-            } catch(e) { alert("Gagal koneksi."); if(btn) btn.innerText = "Mulai Latihan"; }
+                questions = (data && data.length > 0) ? data : [{question:"Data kosong.", options:{A:"-"}, correct:"A"}];
+                answers = new Array(questions.length).fill(null); 
+                idx = 0;
+                examStartTime = Date.now(); // Catat waktu mulai
+
+                setupExamUI(mode === 'full' ? "Simulasi Full" : cat);
+                saveProgress(duration); // Simpan progress awal
+                startTimer(duration);
+            } catch(e) { 
+                alert("Gagal koneksi server. Pastikan 'node api/index.js' jalan."); 
+                if(btn) btn.innerText = "Mulai"; 
+            }
+        }
+
+        function setupExamUI(title) {
+            document.getElementById('landing-page').classList.add('hidden');
+            document.getElementById('exam-container').classList.remove('hidden');
+            document.getElementById('exam-title').innerText = title;
+            renderQ(); 
+            renderNav();
         }
 
         function renderQ() {
@@ -225,77 +241,145 @@
             document.getElementById('question-box').innerHTML = h;
             renderNav();
         }
-        function pilih(opt) { answers[idx] = opt; renderQ(); }
-        function navQ(d) { if(idx+d >= 0 && idx+d < questions.length) { idx += d; renderQ(); } }
+
+        function pilih(opt) { 
+            answers[idx] = opt; 
+            renderQ(); 
+            saveProgress(); // AUTO-SAVE SETIAP PILIH JAWABAN
+        }
+        
+        function navQ(d) { 
+            if(idx+d >= 0 && idx+d < questions.length) { 
+                idx += d; 
+                renderQ(); 
+                saveProgress(); // AUTO-SAVE SETIAP PINDAH SOAL
+            } 
+        }
+
         function renderNav() {
             const g = document.getElementById('nav-grid'); g.innerHTML = '';
             questions.forEach((_, i) => {
                 const d = document.createElement('div');
                 d.className = `nav-item ${idx===i?'active':''} ${answers[i]?'answered':''}`;
                 d.innerText = i+1;
-                d.onclick = () => { idx=i; renderQ(); };
+                d.onclick = () => { idx=i; renderQ(); saveProgress(); };
                 g.appendChild(d);
             });
         }
+
         function startTimer(s) {
-            const el = document.getElementById('timer'); clearInterval(timerVal);
+            const el = document.getElementById('timer'); 
+            clearInterval(timerVal);
+            
+            // Hitung target waktu selesai (biar sinkron kalau di-refresh)
+            let endTime = Date.now() + (s * 1000);
+            
+            // Kalau ini load dari save-an, pakai sisa waktu yang benar
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if(saved) {
+                const d = JSON.parse(saved);
+                if(d.endTime) endTime = d.endTime; // Pakai target waktu yang lama
+                else {
+                    // Kalau data lama belum punya endTime, update
+                    d.endTime = endTime;
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(d));
+                }
+            }
+
             timerVal = setInterval(() => {
-                let m = Math.floor(s/60), sec = Math.floor(s%60);
+                const now = Date.now();
+                let diff = Math.ceil((endTime - now) / 1000); // Sisa detik
+                
+                if (diff <= 0) { 
+                    clearInterval(timerVal); 
+                    submitExam(); 
+                    return;
+                }
+
+                let m = Math.floor(diff/60), sec = Math.floor(diff%60);
                 let h = Math.floor(m/60); m = m%60;
                 el.innerText = `${h}:${m<10?'0'+m:m}:${sec<10?'0'+sec:sec}`;
-                if(--s < 0) { clearInterval(timerVal); submitExam(); }
             }, 1000);
         }
 
-        // --- FUNGSI SUBMIT & GENERATE PEMBAHASAN ---
+        // --- FITUR ANTI-RESET (LOGIC UTAMA) ---
+        function saveProgress(initialDuration = 0) {
+            const data = {
+                questions: questions,
+                answers: answers,
+                idx: idx,
+                title: document.getElementById('exam-title').innerText,
+                // Simpan endTime agar timer akurat
+                endTime: initialDuration ? (Date.now() + initialDuration * 1000) : null 
+            };
+            
+            // Jika sudah ada endTime sebelumnya, jangan ditimpa (pakai yang lama)
+            const old = localStorage.getItem(STORAGE_KEY);
+            if(old) {
+                const oldData = JSON.parse(old);
+                if(oldData.endTime) data.endTime = oldData.endTime;
+            }
+
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+        }
+
+        function loadProgress() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (!saved) return;
+
+            try {
+                const d = JSON.parse(saved);
+                // Cek apakah masih ada waktu?
+                if(d.endTime && d.endTime < Date.now()) {
+                    localStorage.removeItem(STORAGE_KEY); // Waktu habis, hapus
+                    return;
+                }
+
+                if (confirm(`⚠️ Terdeteksi sesi ujian "${d.title}" yang belum selesai.\n\nKlik OK untuk MELANJUTKAN.\nKlik Cancel untuk MULAI BARU.`)) {
+                    questions = d.questions;
+                    answers = d.answers;
+                    idx = d.idx;
+                    setupExamUI(d.title);
+                    
+                    // Lanjutkan timer berdasarkan selisih waktu
+                    const sisaDetik = Math.ceil((d.endTime - Date.now()) / 1000);
+                    startTimer(sisaDetik);
+                } else {
+                    localStorage.removeItem(STORAGE_KEY);
+                }
+            } catch(e) { console.error(e); localStorage.removeItem(STORAGE_KEY); }
+        }
+
         function submitExam() {
-            if(!confirm("Selesai mengerjakan?")) return;
+            if(!confirm("Yakin selesai mengerjakan?")) return;
             clearInterval(timerVal);
             
+            // HAPUS SAVE-AN KARENA SUDAH SELESAI
+            localStorage.removeItem(STORAGE_KEY);
+
             let correctCount = 0;
             let reviewHTML = "";
 
             questions.forEach((q, i) => {
-                const myAns = answers[i] || "-"; // Jika tidak dijawab, tulis "-"
+                const myAns = answers[i] || "-";
                 const isCorrect = myAns === q.correct;
                 if(isCorrect) correctCount++;
 
-                // Buat Kotak Review per Soal
                 reviewHTML += `
                     <div class="review-item ${isCorrect ? 'correct' : 'wrong'}">
-                        <div style="display:flex; justify-content:space-between; align-items:center;">
-                            <b>Soal No ${i+1}</b>
-                            <span class="status-badge ${isCorrect ? 'bg-green' : 'bg-red'}">
-                                ${isCorrect ? 'BENAR' : 'SALAH'}
-                            </span>
-                        </div>
-                        <p style="margin:10px 0; font-size:0.95rem;">${q.question}</p>
-                        
-                        <div style="font-size:0.9rem; margin-bottom:10px;">
-                            <div>Jawaban Kamu: <b>${myAns}</b> ${isCorrect ? '✅' : '❌'}</div>
-                            ${!isCorrect ? `<div style="color:var(--green); font-weight:bold;">Kunci Jawaban: ${q.correct}</div>` : ''}
-                        </div>
-
-                        <div class="explanation-box">
-                            <span class="explanation-title">💡 Pembahasan:</span>
-                            ${q.explanation || "Tidak ada pembahasan untuk soal ini."}
-                        </div>
+                        <div style="display:flex; justify-content:space-between;"><b>Soal No ${i+1}</b> <span class="status-badge ${isCorrect ? 'bg-green' : 'bg-red'}">${isCorrect ? 'BENAR' : 'SALAH'}</span></div>
+                        <p style="margin:10px 0;">${q.question}</p>
+                        <div style="font-size:0.9rem;">Jawaban Kamu: <b>${myAns}</b> ${!isCorrect ? `| Kunci: <b>${q.correct}</b>` : ''}</div>
+                        <div class="explanation-box"><span class="explanation-title">💡 Pembahasan:</span>${q.explanation || "-"}</div>
                     </div>
                 `;
             });
 
-            // Tampilkan Halaman Hasil
             document.getElementById('exam-container').classList.add('hidden');
             document.getElementById('result-page').classList.remove('hidden');
-            
-            // Isi Skor
             document.getElementById('final-score').innerText = Math.round((correctCount/questions.length)*1000);
-            document.getElementById('final-msg').innerText = `Kamu benar ${correctCount} dari ${questions.length} soal.`;
-            
-            // Isi List Pembahasan
+            document.getElementById('final-msg').innerText = `Benar ${correctCount} dari ${questions.length} soal.`;
             document.getElementById('review-list').innerHTML = reviewHTML;
-            
-            // Scroll ke atas agar user lihat skor dulu
             window.scrollTo(0,0);
         }
     </script>

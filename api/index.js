@@ -118,3 +118,11 @@ app.get('/', (req, res) => {
 });
 
 module.exports = app;
+
+// Cek: Jika file ini dijalankan langsung di terminal (Localhost), nyalakan servernya
+if (require.main === module) {
+    const port = 3000;
+    app.listen(port, () => {
+        console.log(`🚀 Server PAHAMIN siap! Buka browser di: http://localhost:${port}`);
+    });
+}
